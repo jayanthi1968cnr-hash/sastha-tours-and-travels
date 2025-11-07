@@ -43,9 +43,21 @@ const internationalSlides = [
   { id: 4, image: 'https://images.unsplash.com/photo-1513022415121-861c8f1b622c?w=500&auto=format&fit=crop', alt: 'Colosseum, Rome' },
 ];
 
+// Background images for hero section
+const backgroundImages = [
+  'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1400',
+  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1400',
+  'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1400',
+  'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1400',
+  'https://images.unsplash.com/photo-1504150558240-0b4fd8946624?auto=format&fit=crop&w=1400'
+];
+
 const Home = () => {
   // 2. Initialize the navigate function
   const navigate = useNavigate();
+
+  // State for background image transitions
+  const [currentBgIndex, setCurrentBgIndex] = useState(0);
 
   // State for Search Bar
   const [checkIn, setCheckIn] = useState('');
@@ -75,6 +87,14 @@ const Home = () => {
 
   // State for App Download Slideshow
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  // --- Background Image Rotation Effect ---
+  useEffect(() => {
+    const bgInterval = setInterval(() => {
+      setCurrentBgIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length);
+    }, 5000); // Change every 5 seconds
+    return () => clearInterval(bgInterval);
+  }, []);
 
   // --- Search Bar Functions ---
   const formatTravelerText = () => {
@@ -225,9 +245,13 @@ const Home = () => {
   return (
     <div className="home">
       {/* Hero Section */}
-      <section className="hero">
+      <section className="hero" style={{ 
+        backgroundImage: `url(${backgroundImages[currentBgIndex]})`,
+        transition: 'background-image 1.5s ease-in-out'
+      }}>
         <div className="hero-overlay"></div>
         <div className="hero-content">
+          <div className="company-name">Sastha Tour's & Travels</div>
           <h1 className="hero-title">Your next trip starts here</h1>
           {/* Form now calls the updated handleSearch */}
           <form className="search-box" onSubmit={handleSearch}>
