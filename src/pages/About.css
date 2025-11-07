@@ -1,0 +1,129 @@
+.about-page {
+  width: 100%;
+  padding: 4rem 0; /* 64px top/bottom padding */
+  background-color: #f9fafb; /* Light gray background to match home */
+  min-height: 80vh; /* Ensure it takes up most of the screen */
+}
+
+.about-container {
+  max-width: 80rem; /* 1280px */
+  margin: 0 auto;
+  padding: 0 1.5rem; /* 24px left/right padding */
+}
+
+/* --- Header Section --- */
+.about-header {
+  max-width: 48rem; /* 768px */
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 3rem; /* 48px */
+}
+
+.about-subtitle {
+  font-size: 1.125rem; /* 18px */
+  font-weight: 600;
+  color: #2563eb; /* Blue */
+  margin-bottom: 0.5rem; /* 8px */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.about-title {
+  font-size: 2.25rem; /* 36px */
+  font-weight: 800;
+  color: #111827; /* Dark gray */
+  margin-bottom: 1rem; /* 16px */
+}
+
+@media (min-width: 768px) {
+  .about-title {
+    font-size: 3rem; /* 48px */
+  }
+}
+
+.about-intro {
+  font-size: 1.125rem; /* 18px */
+  color: #4b5563; /* Medium gray */
+  line-height: 1.75;
+}
+
+.about-intro strong {
+  color: #1f2937; /* Darker text for emphasis */
+}
+
+/* --- Main Content Grid --- */
+.about-content {
+  background-color: white;
+  border-radius: 0.5rem; /* 8px */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* To contain the rounded corners of the image */
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column on mobile */
+  gap: 2rem; /* 32px */
+}
+
+/* Two columns on desktop */
+@media (min-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0; /* Remove gap, as image and text will be side-by-side */
+  }
+}
+
+.about-text {
+  padding: 2rem; /* 32px */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .about-text {
+    padding: 3rem; /* 48px */
+  }
+}
+
+.section-title {
+  font-size: 1.875rem; /* 30px */
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1.5rem; /* 24px */
+}
+
+.section-paragraph {
+  font-size: 1rem; /* 16px */
+  color: #374151;
+  line-height: 1.75;
+  margin-bottom: 1.25rem; /* 20px */
+}
+
+.section-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.section-paragraph strong {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+/* --- Image Section --- */
+.about-image-wrapper {
+  width: 100%;
+  height: 300px; /* Fixed height on mobile */
+}
+
+@media (min-width: 768px) {
+  .about-image-wrapper {
+    height: 100%; /* Full height of the grid cell on desktop */
+  }
+}
+
+.about-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
