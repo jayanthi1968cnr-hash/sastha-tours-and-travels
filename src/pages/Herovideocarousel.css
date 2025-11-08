@@ -366,9 +366,9 @@
   border-radius: 50%;
   cursor: pointer;
   transition: all 0.3s ease;
-  display: flex;
   align-items: center;
   justify-content: center;
+  display: none; /* Hide by default on mobile */
 }
 
 .video-nav-arrow:hover {
@@ -385,7 +385,12 @@
   right: 1rem;
 }
 
+/* Show arrows on tablets and desktop only */
 @media (min-width: 768px) {
+  .video-nav-arrow {
+    display: flex; /* Show on tablet and up */
+  }
+  
   .video-nav-left {
     left: 2rem;
   }
