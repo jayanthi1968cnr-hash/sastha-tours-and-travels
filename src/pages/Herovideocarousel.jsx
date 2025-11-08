@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
-import './HeroVideoCarousel.css';
+import './Herovideocarousel.css';
 
 // Video data - 4 videos WITHOUT poster/thumbnails
 const videos = [
