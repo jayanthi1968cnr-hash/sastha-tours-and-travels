@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-// 1. Import useNavigate to handle the navigation
 import { useNavigate } from 'react-router-dom'; 
 import { Search, Users, Plus, Minus, ChevronLeft, ChevronRight } from 'lucide-react';
+import HeroVideoCarousel from './Herovideocarousel'; // Import the new component
 import './Home.css';
 
 // Data for Featured Destinations
@@ -35,37 +35,8 @@ const allDestinationsData = {
 };
 const categories = ['All', 'Mountains', 'Water Falls', 'Hiking', 'Camp fire', 'Family Night', 'Corporate Corner'];
 
-// Data for App Download Slideshow
-const internationalSlides = [
-  { id: 1, image: 'https://images.unsplash.com/photo-1502602898657-3e91760c0339?w=500&auto=format&fit=crop', alt: 'Eiffel Tower, Paris' },
-  { id: 2, image: 'https://images.unsplash.com/photo-1529655683826-1c5c5e69b6c0?w=500&auto=format&fit=crop', alt: 'Big Ben, London' },
-  { id: 3, image: 'https://images.unsplash.com/photo-1520542312613-c3c1b8f10114?w=500&auto=format&fit=crop', alt: 'Pyramids of Giza' },
-  { id: 4, image: 'https://images.unsplash.com/photo-1513022415121-861c8f1b622c?w=500&auto=format&fit=crop', alt: 'Colosseum, Rome' },
-];
-
-// Background images for hero section
-const backgroundImages = [
-  'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1400',
-  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1400',
-  'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1400',
-  'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1400',
-  'https://images.unsplash.com/photo-1504150558240-0b4fd8946624?auto=format&fit=crop&w=1400'
-];
-
 const Home = () => {
-  // 2. Initialize the navigate function
   const navigate = useNavigate();
-
-  // State for background image transitions
-  const [currentBgIndex, setCurrentBgIndex] = useState(0);
-
-  // State for Search Bar
-  const [checkIn, setCheckIn] = useState('');
-  const [checkOut, setCheckOut] = useState('');
-  const [travelers, setTravelers] = useState({ adults: 2, children: 0, rooms: 1 });
-  const [isTravelerDropdownOpen, setIsTravelerDropdownOpen] = useState(false);
-  const [showCustomTravelers, setShowCustomTravelers] = useState(false);
-  const travelerDropdownRef = useRef(null);
 
   // State and ref for Services Carousel
   const servicesScrollRef = useRef(null);
@@ -125,73 +96,6 @@ const Home = () => {
   const [displayedDestinations, setDisplayedDestinations] = useState([]);
   const destinationsScrollRef = useRef(null);
 
-  // State for App Download Slideshow
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  // --- Background Image Rotation Effect ---
-  useEffect(() => {
-    const bgInterval = setInterval(() => {
-      setCurrentBgIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length);
-    }, 5000); // Change every 5 seconds
-    return () => clearInterval(bgInterval);
-  }, []);
-
-  // --- Search Bar Functions ---
-  const formatTravelerText = () => {
-    let text = `${travelers.adults} adult${travelers.adults !== 1 ? 's' : ''}`;
-    if (travelers.children > 0) {
-      text += `, ${travelers.children} child${travelers.children !== 1 ? 'ren' : ''}`;
-    }
-    text += `, ${travelers.rooms} room${travelers.rooms !== 1 ? 's' : ''}`;
-    return text;
-  };
-
-  // 3. Update handleSearch to navigate and pass state
-  const handleSearch = (e) => {
-    e.preventDefault();
-    // Navigate to the /rooms page and pass the search data in the 'state' object
-    navigate('/rooms', {
-      state: {
-        checkIn: checkIn,
-        checkOut: checkOut,
-        travelers: travelers
-      }
-    });
-  };
-
-  const handleCustomTravelerChange = (type, operation) => {
-    setTravelers((prev) => {
-      const newValue = operation === 'increment' ? prev[type] + 1 : prev[type] - 1;
-      if (type === 'children' && newValue < 0) return prev;
-      if ((type === 'adults' || type === 'rooms') && newValue < 1) return prev;
-      return { ...prev, [type]: newValue };
-    });
-  };
-
-  const handlePresetClick = (preset) => {
-    if (preset === 'single') {
-      setTravelers({ adults: 1, children: 0, rooms: 1 });
-    } else if (preset === 'couple') {
-      setTravelers({ adults: 2, children: 0, rooms: 1 });
-    } else if (preset === 'family') {
-      setTravelers({ adults: 2, children: 1, rooms: 1 });
-    }
-    setIsTravelerDropdownOpen(false);
-  };
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (travelerDropdownRef.current && !travelerDropdownRef.current.contains(event.target)) {
-        setIsTravelerDropdownOpen(false);
-        setShowCustomTravelers(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
-
   // Services Carousel Auto-scroll Effect
   useEffect(() => {
     const scrollContainer = servicesScrollRef.current;
@@ -233,14 +137,6 @@ const Home = () => {
       setDisplayedDestinations(allDestinationsData[activeCategory] || []);
     }
   }, [activeCategory]);
-
-  // Effect for App Download Slideshow
-  useEffect(() => {
-    const slideInterval = setInterval(() => {
-      setCurrentSlide((prev) => (prev === internationalSlides.length - 1 ? 0 : prev + 1));
-    }, 3000);
-    return () => clearInterval(slideInterval);
-  }, []);
 
   // Destinations Carousel Manual Scroll Function
   const handleDestinationScroll = (direction) => {
@@ -284,39 +180,8 @@ const Home = () => {
 
   return (
     <div className="home">
-      {/* Hero Section */}
-      <section className="hero" style={{ 
-        backgroundImage: `url(${backgroundImages[currentBgIndex]})`,
-        transition: 'background-image 1.5s ease-in-out'
-      }}>
-        <div className="hero-overlay"></div>
-        <div className="hero-content">
-          {/* White Contact Banner - positioned in top-right */}
-          <div className="contact-banner">
-            <span className="contact-text">Feel free to connect with us</span>
-            <button className="call-btn">
-              <svg className="phone-icon" fill="currentColor" viewBox="0 0 24 24" width="18" height="18">
-                <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
-              </svg>
-              Call
-            </button>
-          </div>
-
-          {/* Main Hero Content */}
-          <div className="hero-main-content">
-            <h1 className="hero-main-title">Customized International Adventures.</h1>
-            <h2 className="hero-subtitle">Let Our Experts Plan Your Trip.</h2>
-            <p className="hero-description">
-              Experience the epitome of luxury and adventure with our customized international journeys.<br />
-              Let our experts curate an extraordinary trip tailored to your desires.
-            </p>
-            <button className="explore-btn">
-              Explore Packages
-              <ChevronRight className="btn-arrow" size={20} />
-            </button>
-          </div>
-        </div>
-      </section>
+      {/* Hero Video Carousel Section - REPLACES old hero */}
+      <HeroVideoCarousel />
 
       {/* Services Carousel Section */}
       <section className="benefits">
@@ -413,7 +278,7 @@ const Home = () => {
                 </svg>
               </div>
               <span className="feature-text">Domestic Tour Packages</span>
-            </div>
+              </div>
             
             <div className="feature-item">
               <div className="feature-icon-wrapper">
