@@ -70,14 +70,54 @@ const Home = () => {
   // State and ref for Services Carousel
   const servicesScrollRef = useRef(null);
   const [services, setServices] = useState([
-    { title: 'Travel adds up', description: 'Stay 10 nights, get a reward night to use however you like.', buttonText: 'How it works' },
-    { title: 'Stays that deliver', description: 'Traveller-favourite VIP Access stays come with high ratings and perks.', buttonText: 'Explore stays' },
-    { title: 'Plans change. We get it.', description: 'Flexible booking options so you can adjust or cancel easily.', buttonText: 'Search now' },
-    { title: 'Flight Up & Down', description: 'Book your round-trip flights with flexible options.', buttonText: 'Book Flights' },
-    { title: '5-Star Hotels', description: 'Find luxury stays with top-rated amenities.', buttonText: 'See Hotels' },
-    { title: 'Local Guides', description: 'Explore like a local with our expert guides.', buttonText: 'Find Guides' },
-    { title: 'Local Travels', description: 'Book cars, cabs, and transfers with ease.', buttonText: 'Book Rides' },
-    { title: 'Food & Yummy Snacks', description: 'Discover the best local cuisine and food tours.', buttonText: 'Explore Food' }
+    { 
+      title: 'Travel adds up', 
+      description: 'Stay 10 nights, get a reward night to use however you like.', 
+      buttonText: 'How it works',
+      image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&auto=format&fit=crop'
+    },
+    { 
+      title: 'Stays that deliver', 
+      description: 'Traveller-favourite VIP Access stays come with high ratings and perks.', 
+      buttonText: 'Explore stays',
+      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&auto=format&fit=crop'
+    },
+    { 
+      title: 'Plans change. We get it.', 
+      description: 'Flexible booking options so you can adjust or cancel easily.', 
+      buttonText: 'Search now',
+      image: 'https://images.unsplash.com/photo-1554224311-beee2ece0e0a?w=600&auto=format&fit=crop'
+    },
+    { 
+      title: 'Flight Up & Down', 
+      description: 'Book your round-trip flights with flexible options.', 
+      buttonText: 'Book Flights',
+      image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&auto=format&fit=crop'
+    },
+    { 
+      title: '5-Star Hotels', 
+      description: 'Find luxury stays with top-rated amenities.', 
+      buttonText: 'See Hotels',
+      image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600&auto=format&fit=crop'
+    },
+    { 
+      title: 'Local Guides', 
+      description: 'Explore like a local with our expert guides.', 
+      buttonText: 'Find Guides',
+      image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&auto=format&fit=crop'
+    },
+    { 
+      title: 'Local Travels', 
+      description: 'Book cars, cabs, and transfers with ease.', 
+      buttonText: 'Book Rides',
+      image: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&auto=format&fit=crop'
+    },
+    { 
+      title: 'Food & Yummy Snacks', 
+      description: 'Discover the best local cuisine and food tours.', 
+      buttonText: 'Explore Food',
+      image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&auto=format&fit=crop'
+    }
   ]);
   
   // State for Featured Destinations
@@ -251,69 +291,30 @@ const Home = () => {
       }}>
         <div className="hero-overlay"></div>
         <div className="hero-content">
-          <div className="company-name">Sastha Tour's & Travels</div>
-          <h1 className="hero-title">Your next trip starts here</h1>
-          {/* Form now calls the updated handleSearch */}
-          <form className="search-box" onSubmit={handleSearch}>
-            <div className="search-field dates-field">
-              <div className="date-input-group">
-                <label className="search-label">Check-in</label>
-                <input type="date" className="search-input" value={checkIn} onChange={(e) => setCheckIn(e.target.value)} required />
-              </div>
-              <div className="date-input-group">
-                <label className="search-label">Check-out</label>
-                <input type="date" className="search-input" value={checkOut} onChange={(e) => setCheckOut(e.target.value)} required />
-              </div>
-            </div>
-            <div className="search-field travelers-field" ref={travelerDropdownRef}>
-              <label className="search-label">Travellers</label>
-              <div className="input-wrapper" onClick={() => setIsTravelerDropdownOpen(!isTravelerDropdownOpen)}>
-                <Users className="input-icon" />
-                <input type="text" className="search-input traveler-input" value={formatTravelerText()} readOnly />
-              </div>
-              {isTravelerDropdownOpen && (
-                <div className="traveler-dropdown">
-                  {!showCustomTravelers ? (
-                    <>
-                      <div className="traveler-option" onClick={() => handlePresetClick('single')}>Single <span>1 adult, 1 room</span></div>
-                      <div className="traveler-option" onClick={() => handlePresetClick('couple')}>2 Persons <span>2 adults, 1 room</span></div>
-                      <div className="traveler-option" onClick={() => handlePresetClick('family')}>Family <span>2 adults, 1 child, 1 room</span></div>
-                      <div className="traveler-option" onClick={() => setShowCustomTravelers(true)}>More <span>Custom travellers, rooms...</span></div>
-                    </>
-                  ) : (
-                    <div className="custom-traveler-inputs">
-                      <div className="input-row">
-                        <span>Adults</span>
-                        <div className="counter">
-                          <button type="button" className="counter-btn" onClick={() => handleCustomTravelerChange('adults', 'decrement')}><Minus size={16} /></button>
-                          <span>{travelers.adults}</span>
-                          <button type="button" className="counter-btn" onClick={() => handleCustomTravelerChange('adults', 'increment')}><Plus size={16} /></button>
-                        </div>
-                      </div>
-                      <div className="input-row">
-                        <span>Children</span>
-                        <div className="counter">
-                          <button type="button" className="counter-btn" onClick={() => handleCustomTravelerChange('children', 'decrement')}><Minus size={16} /></button>
-                          <span>{travelers.children}</span>
-                          <button type="button" className="counter-btn" onClick={() => handleCustomTravelerChange('children', 'increment')}><Plus size={16} /></button>
-                        </div>
-                      </div>
-                      <div className="input-row">
-                        <span>Rooms</span>
-                        <div className="counter">
-                          <button type="button" className="counter-btn" onClick={() => handleCustomTravelerChange('rooms', 'decrement')}><Minus size={16} /></button>
-                          <span>{travelers.rooms}</span>
-                          <button type="button" className="counter-btn" onClick={() => handleCustomTravelerChange('rooms', 'increment')}><Plus size={16} /></button>
-                        </div>
-                      </div>
-                      <button type="button" className="done-btn" onClick={() => setIsTravelerDropdownOpen(false)}>Done</button>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-            <button type="submit" className="search-btn"><Search className="btn-icon" />Search</button>
-          </form>
+          {/* White Contact Banner - positioned in top-right */}
+          <div className="contact-banner">
+            <span className="contact-text">Feel free to connect with us</span>
+            <button className="call-btn">
+              <svg className="phone-icon" fill="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+              </svg>
+              Call
+            </button>
+          </div>
+
+          {/* Main Hero Content */}
+          <div className="hero-main-content">
+            <h1 className="hero-main-title">Customized International Adventures.</h1>
+            <h2 className="hero-subtitle">Let Our Experts Plan Your Trip.</h2>
+            <p className="hero-description">
+              Experience the epitome of luxury and adventure with our customized international journeys.<br />
+              Let our experts curate an extraordinary trip tailored to your desires.
+            </p>
+            <button className="explore-btn">
+              Explore Packages
+              <ChevronRight className="btn-arrow" size={20} />
+            </button>
+          </div>
         </div>
       </section>
 
@@ -323,10 +324,13 @@ const Home = () => {
           <button className="scroll-arrow left" onClick={() => handleServiceScroll('left')}><ChevronLeft size={24} /></button>
           <div className="benefits-container" ref={servicesScrollRef}>
             {services.map((service, index) => (
-              <div className="benefit-card" key={index}>
-                <h3 className="benefit-title">{service.title}</h3>
-                <p className="benefit-text">{service.description}</p>
-                <a href="#" className="benefit-link">{service.buttonText}</a>
+              <div className="benefit-card" key={index} style={{ backgroundImage: `url(${service.image})` }}>
+                <div className="benefit-card-overlay"></div>
+                <div className="benefit-card-content">
+                  <h3 className="benefit-title">{service.title}</h3>
+                  <p className="benefit-text">{service.description}</p>
+                  <a href="#" className="benefit-link">{service.buttonText}</a>
+                </div>
               </div>
             ))}
           </div>
@@ -378,55 +382,158 @@ const Home = () => {
         </div>
       </section>
 
-      {/* App Download Section */}
-      <section className="app-download">
-        <div className="app-container">
-          <div className="app-content">
-            <h2 className="app-title">With Sastha Tour's & Travels you can get:</h2>
-            <ul className="app-features">
-              <li className="app-feature">
-                <div className="feature-icon"><svg className="checkmark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg></div>
-                International Tour Package
-              </li>
-              <li className="app-feature">
-                <div className="feature-icon"><svg className="checkmark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg></div>
-                Passport & Visa Assistance
-              </li>
-              <li className="app-feature">
-                <div className="feature-icon"><svg className="checkmark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg></div>
-                Domestic Tour Packages
-              </li>
-              <li className="app-feature">
-                <div className="feature-icon"><svg className="checkmark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg></div>
-                Hotel Room Bookings
-              </li>
-              <li className="app-feature">
-                <div className="feature-icon"><svg className="checkmark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg></div>
-                Catering Services
-              </li>
-              <li className="app-feature">
-                <div className="feature-icon"><svg className="checkmark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg></div>
-                Flight Booking
-              </li>
-               <li className="app-feature">
-                <div className="feature-icon"><svg className="checkmark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg></div>
-                Local Transport
-              </li>
-            </ul>
-            <p className="qr-text">Scan the QR code with your device camera and download our app</p>
-            <div className="qr-code">QR Code</div>
+      {/* Services Features Section */}
+      <section className="services-features">
+        <div className="services-features-container">
+          <h2 className="services-features-title">With Sastha Tour's & Travels you can get:</h2>
+          <div className="features-grid">
+            <div className="feature-item">
+              <div className="feature-icon-wrapper">
+                <svg className="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <span className="feature-text">International Tour Package</span>
+            </div>
+            
+            <div className="feature-item">
+              <div className="feature-icon-wrapper">
+                <svg className="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
+              </div>
+              <span className="feature-text">Passport & Visa Assistance</span>
+            </div>
+            
+            <div className="feature-item">
+              <div className="feature-icon-wrapper">
+                <svg className="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              </div>
+              <span className="feature-text">Domestic Tour Packages</span>
+            </div>
+            
+            <div className="feature-item">
+              <div className="feature-icon-wrapper">
+                <svg className="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                </svg>
+              </div>
+              <span className="feature-text">Hotel Room Bookings</span>
+            </div>
+            
+            <div className="feature-item">
+              <div className="feature-icon-wrapper">
+                <svg className="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/>
+                </svg>
+              </div>
+              <span className="feature-text">Catering Services</span>
+            </div>
+            
+            <div className="feature-item">
+              <div className="feature-icon-wrapper">
+                <svg className="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                </svg>
+              </div>
+              <span className="feature-text">Flight Booking</span>
+            </div>
+            
+            <div className="feature-item">
+              <div className="feature-icon-wrapper">
+                <svg className="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+                </svg>
+              </div>
+              <span className="feature-text">Local Transport</span>
+            </div>
+            
+            <div className="feature-item">
+              <div className="feature-icon-wrapper">
+                <svg className="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                </svg>
+              </div>
+              <span className="feature-text">Restaurant</span>
+            </div>
           </div>
-          
-          <div className="app-slideshow">
-            <div className="slideshow-track" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
-              {internationalSlides.map((slide) => (
-                <div className="slide" key={slide.id}>
-                  <img src={slide.image} alt={slide.alt} />
+        </div>
+      </section>
+
+      {/* Happy Customers Section */}
+      <section className="happy-customers">
+        <div className="customers-container">
+          {/* First Row - Scroll Right to Left */}
+          <div className="customers-carousel-wrapper">
+            <div className="customers-carousel scroll-right-to-left">
+              {[
+                'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=400&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&auto=format&fit=crop',
+              ].map((img, idx) => (
+                <div key={idx} className="customer-image-card">
+                  <img src={img} alt={`Customer ${idx + 1}`} />
+                </div>
+              ))}
+              {/* Duplicate for seamless loop */}
+              {[
+                'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=400&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&auto=format&fit=crop',
+              ].map((img, idx) => (
+                <div key={`dup1-${idx}`} className="customer-image-card">
+                  <img src={img} alt={`Customer duplicate ${idx + 1}`} />
                 </div>
               ))}
             </div>
-            <div className="slideshow-overlay">
-              Around the world with Sastha
+          </div>
+
+          {/* Title and Button in the Middle */}
+          <div className="customers-middle-content">
+            <h2 className="customers-title">
+              <span className="customers-title-purple">Happy Customers,</span>{' '}
+              <span className="customers-title-orange">Happy Stories</span>
+            </h2>
+            <button className="view-instagram-btn">View Instagram</button>
+          </div>
+
+          {/* Second Row - Scroll Left to Right */}
+          <div className="customers-carousel-wrapper">
+            <div className="customers-carousel scroll-left-to-right">
+              {[
+                'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=400&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=400&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop',
+              ].map((img, idx) => (
+                <div key={idx} className="customer-image-card">
+                  <img src={img} alt={`Customer ${idx + 7}`} />
+                </div>
+              ))}
+              {/* Duplicate for seamless loop */}
+              {[
+                'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=400&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=400&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop',
+              ].map((img, idx) => (
+                <div key={`dup2-${idx}`} className="customer-image-card">
+                  <img src={img} alt={`Customer duplicate ${idx + 7}`} />
+                </div>
+              ))}
             </div>
           </div>
         </div>
