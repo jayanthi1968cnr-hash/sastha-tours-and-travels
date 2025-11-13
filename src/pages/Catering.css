@@ -1,0 +1,1081 @@
+/* ========================================
+   Catering Services - Premium CSS
+   ======================================== */
+
+/* Reset and Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.catering {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+/* Container */
+.cat-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (min-width: 768px) {
+  .cat-container {
+    padding: 0 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cat-container {
+    padding: 0 4rem;
+  }
+}
+
+/* ========================================
+   3D Background Elements
+   ======================================== */
+.cat-3d-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.cat-3d-sphere {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(220, 38, 38, 0.12), rgba(185, 28, 28, 0.06));
+  filter: blur(60px);
+  animation: float3D 20s ease-in-out infinite;
+}
+
+.cat-3d-sphere-1 {
+  width: 400px;
+  height: 400px;
+  top: 15%;
+  left: -10%;
+}
+
+.cat-3d-sphere-2 {
+  width: 500px;
+  height: 500px;
+  top: 55%;
+  right: -15%;
+  animation-delay: 7s;
+}
+
+.cat-3d-sphere-3 {
+  width: 350px;
+  height: 350px;
+  bottom: 15%;
+  left: 45%;
+  animation-delay: 14s;
+}
+
+@keyframes float3D {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-40px) translateX(30px);
+  }
+}
+
+/* ========================================
+   Hero Section with Carousel - Very Light Overlay
+   ======================================== */
+.cat-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Hero Carousel Styles */
+.cat-hero-carousel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.cat-hero-carousel-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.cat-hero-carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.cat-hero-carousel-slide.active {
+  opacity: 1;
+}
+
+.cat-hero-carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Very light overlay - 0.25 opacity for maximum visibility */
+.cat-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.25) 0%, rgba(234, 88, 12, 0.2) 100%);
+  z-index: 1;
+}
+
+/* Carousel Navigation Arrows */
+.cat-hero-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+  border: 2px solid white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 2.5rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  line-height: 1;
+  padding: 0;
+}
+
+.cat-hero-carousel-arrow:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.cat-hero-carousel-prev {
+  left: 30px;
+}
+
+.cat-hero-carousel-next {
+  right: 30px;
+}
+
+/* Carousel Dots */
+.cat-hero-carousel-dots {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+}
+
+.cat-hero-carousel-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.cat-hero-carousel-dot:hover,
+.cat-hero-carousel-dot.active {
+  background: white;
+  transform: scale(1.2);
+}
+
+/* Hero Content */
+.cat-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  padding: 40px 20px;
+  max-width: 1200px;
+  animation: fadeInUp 1s ease-out;
+}
+
+.cat-hero-icon-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.cat-utensils-icon {
+  width: 80px;
+  height: 80px;
+  color: white;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@media (min-width: 768px) {
+  .cat-utensils-icon {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.cat-hero-title {
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  line-height: 1.1;
+  letter-spacing: -2px;
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+@media (min-width: 768px) {
+  .cat-hero-title {
+    font-size: 5.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cat-hero-title {
+    font-size: 6.5rem;
+  }
+}
+
+.cat-hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  opacity: 0.95;
+  animation: fadeInUp 1s ease-out 0.4s both;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .cat-hero-subtitle {
+    font-size: 1.8rem;
+  }
+}
+
+/* ========================================
+   Description Section
+   ======================================== */
+.cat-description {
+  padding: 6rem 0;
+  background: linear-gradient(180deg, #fef2f2 0%, #ffffff 100%);
+}
+
+@media (min-width: 768px) {
+  .cat-description {
+    padding: 8rem 0;
+  }
+}
+
+.cat-description-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cat-description-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+@media (min-width: 768px) {
+  .cat-description-title {
+    font-size: 3rem;
+  }
+}
+
+.cat-description-text {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #4b5563;
+  margin-bottom: 3rem;
+  font-weight: 400;
+}
+
+@media (min-width: 768px) {
+  .cat-description-text {
+    font-size: 1.25rem;
+    line-height: 2;
+  }
+}
+
+.cat-description-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.cat-stat-item-small {
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+  transition: transform 0.3s ease;
+  color: white;
+  text-align: center;
+}
+
+.cat-stat-item-small:hover {
+  transform: translateY(-8px);
+}
+
+.cat-stat-icon-svg {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 0.75rem;
+  stroke-width: 2;
+}
+
+.cat-stat-number-small {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.cat-stat-label-small {
+  font-size: 1rem;
+  opacity: 0.9;
+  font-weight: 600;
+}
+
+/* ========================================
+   Section Title
+   ======================================== */
+.cat-section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 4rem;
+  color: #111827;
+  position: relative;
+  padding-bottom: 1.5rem;
+  letter-spacing: -1px;
+}
+
+@media (min-width: 768px) {
+  .cat-section-title {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cat-section-title {
+    font-size: 3.75rem;
+  }
+}
+
+.cat-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 5px;
+  background: linear-gradient(90deg, #dc2626 0%, #b91c1c 100%);
+  border-radius: 3px;
+}
+
+/* ========================================
+   Occasions Section
+   ======================================== */
+.cat-occasions {
+  padding: 4rem 0;
+  background: white;
+  border-top: 2px solid #f3f4f6;
+  border-bottom: 2px solid #f3f4f6;
+}
+
+.cat-occasions-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  color: #374151;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cat-occasions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cat-occasion-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 1rem;
+  background: white;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  border: 2px solid #f3f4f6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.cat-occasion-item:hover {
+  background: #fef2f2;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(220, 38, 38, 0.15);
+  border-color: #dc2626;
+}
+
+.cat-occasion-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.cat-occasion-item:hover .cat-occasion-icon-wrapper {
+  transform: scale(1.1) rotate(10deg);
+}
+
+.cat-occasion-icon-svg {
+  width: 28px;
+  height: 28px;
+  color: white;
+  stroke-width: 2;
+}
+
+.cat-occasion-name {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #374151;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* ========================================
+   Menus Section with Images
+   ======================================== */
+.cat-menus {
+  padding: 6rem 0;
+  background: white;
+}
+
+@media (min-width: 768px) {
+  .cat-menus {
+    padding: 8rem 0;
+  }
+}
+
+.cat-menus-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .cat-menus-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .cat-menus-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.cat-menu-card {
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+  border: 2px solid #f3f4f6;
+}
+
+.cat-menu-card:hover,
+.cat-menu-card.active {
+  transform: translateY(-12px);
+  box-shadow: 0 25px 60px rgba(220, 38, 38, 0.15);
+  border-color: #dc2626;
+}
+
+.cat-menu-image {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+}
+
+.cat-menu-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.cat-menu-card:hover .cat-menu-image img {
+  transform: scale(1.1);
+}
+
+.cat-menu-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(220, 38, 38, 0.7) 0%, transparent 60%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cat-menu-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease;
+}
+
+.cat-menu-card:hover .cat-menu-icon-wrapper {
+  transform: scale(1.15) rotate(10deg);
+}
+
+.cat-menu-icon-svg {
+  width: 32px;
+  height: 32px;
+  color: #dc2626;
+  stroke-width: 2;
+}
+
+.cat-menu-content {
+  padding: 2rem;
+}
+
+.cat-menu-name {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.5px;
+}
+
+.cat-menu-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+.cat-menu-items {
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  background: #f9fafb;
+  border-radius: 12px;
+}
+
+.cat-items-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cat-items-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cat-items-list li {
+  font-size: 0.9375rem;
+  color: #6b7280;
+  padding-left: 25px;
+  position: relative;
+  font-weight: 600;
+}
+
+.cat-items-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #dc2626;
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.cat-menu-button {
+  width: 100%;
+  padding: 1rem 2rem;
+  color: white;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.3);
+}
+
+.cat-menu-button:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(220, 38, 38, 0.4);
+}
+
+/* ========================================
+   Features Section
+   ======================================== */
+.cat-features {
+  padding: 6rem 0;
+  background: linear-gradient(180deg, #fef2f2 0%, #ffffff 100%);
+}
+
+@media (min-width: 768px) {
+  .cat-features {
+    padding: 8rem 0;
+  }
+}
+
+.cat-features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .cat-features-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.cat-feature-card {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: white;
+  border-radius: 20px;
+  border: 2px solid #fecaca;
+  transition: all 0.4s ease;
+}
+
+.cat-feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(220, 38, 38, 0.15);
+  border-color: #dc2626;
+}
+
+.cat-feature-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  box-shadow: 0 8px 20px rgba(220, 38, 38, 0.3);
+  transition: transform 0.4s ease;
+  animation: pulse 2s ease-in-out infinite;
+  color: white;
+}
+
+.cat-feature-card:hover .cat-feature-icon-wrapper {
+  transform: scale(1.15) rotate(360deg);
+  animation: none;
+}
+
+.cat-feature-icon-svg {
+  width: 40px;
+  height: 40px;
+  stroke-width: 2;
+}
+
+.cat-feature-badge {
+  display: inline-block;
+  background: #fef2f2;
+  color: #dc2626;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cat-feature-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.75rem;
+}
+
+.cat-feature-description {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: #6b7280;
+}
+
+/* ========================================
+   CTA Section - Dark Gradient Background
+   ======================================== */
+.cat-cta {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #1e3a52 0%, #2d5369 50%, #3a6f8f 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .cat-cta {
+    padding: 8rem 0;
+  }
+}
+
+/* Floating circles animation */
+.cat-cta::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: rgba(220, 38, 38, 0.08);
+  border-radius: 50%;
+  animation: float 25s ease-in-out infinite;
+}
+
+.cat-cta::after {
+  content: '';
+  position: absolute;
+  bottom: -25%;
+  left: -8%;
+  width: 450px;
+  height: 450px;
+  background: rgba(185, 28, 28, 0.06);
+  border-radius: 50%;
+  animation: float 20s ease-in-out infinite reverse;
+}
+
+.cat-cta-card {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.cat-cta-icon {
+  font-size: 5rem;
+  margin-bottom: 1.5rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.cat-cta-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  letter-spacing: -1px;
+}
+
+@media (min-width: 768px) {
+  .cat-cta-title {
+    font-size: 3rem;
+  }
+}
+
+.cat-cta-subtitle {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2.5rem;
+}
+
+.cat-cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.cat-cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.125rem 2.5rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cat-cta-button.whatsapp {
+  background: #25D366;
+  color: white;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+}
+
+.cat-cta-button.whatsapp:hover {
+  background: #20ba5a;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(37, 211, 102, 0.5);
+}
+
+.cat-cta-button.call {
+  background: white;
+  color: #dc2626;
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+}
+
+.cat-cta-button.call:hover {
+  background: #f9fafb;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(255, 255, 255, 0.4);
+}
+
+.cat-whatsapp-icon,
+.cat-call-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* ========================================
+   SEO Footer
+   ======================================== */
+.cat-seo-footer {
+  padding: 3.5rem 0;
+  background: #1f2937;
+  border-top: 4px solid #374151;
+}
+
+.cat-seo-text {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin: 0;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .cat-seo-text {
+    font-size: 1.0625rem;
+  }
+}
+
+/* ========================================
+   Animations
+   ======================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(-30px) translateX(20px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* ========================================
+   Responsive - Carousel
+   ======================================== */
+@media (max-width: 768px) {
+  .cat-hero {
+    min-height: 90vh;
+  }
+
+  .cat-hero-title {
+    font-size: 2.8rem;
+  }
+
+  .cat-hero-subtitle {
+    font-size: 1.3rem;
+  }
+
+  .cat-hero-carousel-arrow {
+    width: 45px;
+    height: 45px;
+    font-size: 1.8rem;
+  }
+
+  .cat-hero-carousel-prev {
+    left: 15px;
+  }
+
+  .cat-hero-carousel-next {
+    right: 15px;
+  }
+
+  .cat-hero-carousel-dots {
+    bottom: 20px;
+  }
+
+  .cat-occasions-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .cat-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cat-cta-buttons {
+    flex-direction: column;
+  }
+
+  .cat-cta-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .cat-container {
+    padding: 0 1rem;
+  }
+
+  .cat-hero-title {
+    font-size: 2.2rem;
+  }
+
+  .cat-hero-carousel-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+
+  .cat-hero-carousel-prev {
+    left: 10px;
+  }
+
+  .cat-hero-carousel-next {
+    right: 10px;
+  }
+
+  .cat-hero-carousel-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .cat-occasions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cat-occasion-item {
+    padding: 1rem 0.75rem;
+  }
+
+  .cat-features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cat-cta-title {
+    font-size: 2rem;
+  }
+}
+
+/* ========================================
+   Accessibility
+   ======================================== */
+.cat-cta-button:focus-visible,
+.cat-menu-button:focus-visible,
+.cat-hero-carousel-arrow:focus-visible,
+.cat-hero-carousel-dot:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .cat-hero-carousel-slide {
+    transition: none;
+  }
+}

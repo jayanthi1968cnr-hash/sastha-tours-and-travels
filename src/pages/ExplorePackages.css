@@ -1,0 +1,1179 @@
+/* ========================================
+   Explore Packages - Complete Premium CSS
+   ======================================== */
+
+/* Reset and Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.explore-packages {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+/* Container */
+.exp-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (min-width: 768px) {
+  .exp-container {
+    padding: 0 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .exp-container {
+    padding: 0 4rem;
+  }
+}
+
+/* ========================================
+   3D Background Elements
+   ======================================== */
+.exp-3d-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.exp-3d-sphere {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.08));
+  filter: blur(60px);
+  animation: float3D 20s ease-in-out infinite;
+}
+
+.exp-3d-sphere-1 {
+  width: 400px;
+  height: 400px;
+  top: 10%;
+  left: -10%;
+  animation-delay: 0s;
+}
+
+.exp-3d-sphere-2 {
+  width: 500px;
+  height: 500px;
+  top: 50%;
+  right: -15%;
+  animation-delay: 7s;
+}
+
+.exp-3d-sphere-3 {
+  width: 350px;
+  height: 350px;
+  bottom: 10%;
+  left: 50%;
+  animation-delay: 14s;
+}
+
+.exp-3d-cube {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(219, 39, 119, 0.05));
+  border-radius: 30px;
+  transform-style: preserve-3d;
+  animation: rotate3D 15s linear infinite;
+  filter: blur(40px);
+}
+
+.exp-3d-cube-1 {
+  top: 30%;
+  right: 20%;
+  animation-delay: 0s;
+}
+
+.exp-3d-cube-2 {
+  bottom: 20%;
+  left: 15%;
+  animation-delay: 7.5s;
+}
+
+@keyframes float3D {
+  0%, 100% {
+    transform: translateY(0) translateX(0) scale(1);
+  }
+  25% {
+    transform: translateY(-30px) translateX(20px) scale(1.05);
+  }
+  50% {
+    transform: translateY(-50px) translateX(-20px) scale(1);
+  }
+  75% {
+    transform: translateY(-20px) translateX(30px) scale(1.05);
+  }
+}
+
+@keyframes rotate3D {
+  0% {
+    transform: rotate(0deg) rotateY(0deg) rotateX(0deg);
+  }
+  50% {
+    transform: rotate(180deg) rotateY(180deg) rotateX(90deg);
+  }
+  100% {
+    transform: rotate(360deg) rotateY(360deg) rotateX(180deg);
+  }
+}
+
+/* ========================================
+   Hero Section
+   ======================================== */
+.exp-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.exp-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: 0;
+}
+
+.exp-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.92) 0%, rgba(118, 75, 162, 0.92) 100%);
+  z-index: 1;
+}
+
+.exp-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  padding: 40px 20px;
+  max-width: 1200px;
+  animation: fadeInUp 1s ease-out;
+}
+
+.exp-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  animation: bounceIn 1s ease-out 0.3s both;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.exp-badge-icon {
+  width: 20px;
+  height: 20px;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+.exp-hero-title {
+  font-size: 4.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.5);
+  line-height: 1.1;
+  letter-spacing: -2px;
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+@media (min-width: 768px) {
+  .exp-hero-title {
+    font-size: 5.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .exp-hero-title {
+    font-size: 6.5rem;
+  }
+}
+
+.exp-hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 3rem;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+  opacity: 0.95;
+  animation: fadeInUp 1s ease-out 0.4s both;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .exp-hero-subtitle {
+    font-size: 1.8rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .exp-hero-subtitle {
+    font-size: 2rem;
+  }
+}
+
+.exp-hero-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  animation: fadeInUp 1s ease-out 0.6s both;
+  flex-wrap: wrap;
+}
+
+.exp-hero-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  animation: float 3s ease-in-out infinite;
+  cursor: pointer;
+}
+
+.exp-hero-icon-wrapper:hover {
+  transform: translateY(-10px) scale(1.1);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.exp-hero-icon-svg {
+  width: 40px;
+  height: 40px;
+  color: white;
+  stroke-width: 1.5;
+}
+
+.exp-hero-icon-wrapper:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.exp-hero-icon-wrapper:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.exp-hero-icon-wrapper:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.exp-hero-icon-wrapper:nth-child(4) {
+  animation-delay: 1.5s;
+}
+
+/* ========================================
+   Intro Section
+   ======================================== */
+.exp-intro {
+  padding: 6rem 0;
+  background: linear-gradient(180deg, #f9fafb 0%, #ffffff 100%);
+}
+
+@media (min-width: 768px) {
+  .exp-intro {
+    padding: 8rem 0;
+  }
+}
+
+.exp-intro-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.exp-intro-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+@media (min-width: 768px) {
+  .exp-intro-title {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .exp-intro-title {
+    font-size: 3.5rem;
+  }
+}
+
+.exp-intro-text {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #4b5563;
+  margin-bottom: 2.5rem;
+  font-weight: 400;
+}
+
+@media (min-width: 768px) {
+  .exp-intro-text {
+    font-size: 1.25rem;
+    line-height: 2;
+  }
+}
+
+.exp-intro-highlight {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 2.5rem;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 3px solid #fbbf24;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(251, 191, 36, 0.25);
+}
+
+.exp-highlight-icon-svg {
+  width: 32px;
+  height: 32px;
+  color: #d97706;
+  flex-shrink: 0;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.exp-highlight-text {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #92400e;
+  line-height: 1.5;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .exp-highlight-text {
+    font-size: 1.25rem;
+  }
+}
+
+/* ========================================
+   Section Title
+   ======================================== */
+.exp-section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 4rem;
+  color: #111827;
+  position: relative;
+  padding-bottom: 1.5rem;
+  letter-spacing: -1px;
+}
+
+@media (min-width: 768px) {
+  .exp-section-title {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .exp-section-title {
+    font-size: 3.75rem;
+    margin-bottom: 5rem;
+  }
+}
+
+.exp-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 5px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  border-radius: 3px;
+}
+
+/* ========================================
+   Categories Section
+   ======================================== */
+.exp-categories {
+  padding: 6rem 0;
+  background: white;
+}
+
+@media (min-width: 768px) {
+  .exp-categories {
+    padding: 8rem 0;
+  }
+}
+
+.exp-categories-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .exp-categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .exp-categories-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+.exp-category-card {
+  background: white;
+  border-radius: 24px;
+  padding: 0;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  border: 3px solid #f3f4f6;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.exp-category-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--card-color);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+  z-index: 2;
+}
+
+.exp-category-card:hover,
+.exp-category-card.hovered {
+  transform: translateY(-12px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+  border-color: var(--card-color);
+}
+
+.exp-category-card:hover::before,
+.exp-category-card.hovered::before {
+  transform: scaleX(1);
+}
+
+/* Card Image Header */
+.exp-card-image {
+  position: relative;
+  height: 220px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+}
+
+.exp-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.exp-category-card:hover .exp-card-image img {
+  transform: scale(1.1);
+}
+
+.exp-card-image-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.exp-category-card:hover .exp-card-image-overlay {
+  opacity: 0.5;
+}
+
+.exp-card-icon-absolute {
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 80px;
+  background: white;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease;
+  z-index: 2;
+}
+
+.exp-category-card:hover .exp-card-icon-absolute {
+  transform: translateX(-50%) scale(1.1) rotate(5deg);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.exp-card-icon-svg {
+  width: 48px;
+  height: 48px;
+  color: var(--card-color);
+  stroke-width: 1.5;
+  animation: iconFloat 3s ease-in-out infinite;
+}
+
+/* Card Content */
+.exp-card-content {
+  padding: 50px 2.5rem 2.5rem 2.5rem;
+}
+
+.exp-card-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+}
+
+@media (min-width: 768px) {
+  .exp-card-title {
+    font-size: 1.875rem;
+  }
+}
+
+.exp-card-description {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.exp-card-destinations {
+  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+  background: #f9fafb;
+  border-radius: 12px;
+}
+
+.exp-destinations-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.exp-destinations-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.exp-destination-tag {
+  background: white;
+  color: #4b5563;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: 2px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.exp-destination-tag:hover {
+  border-color: var(--card-color);
+  color: var(--card-color);
+  transform: translateY(-2px);
+}
+
+.exp-card-features {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.exp-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: #f9fafb;
+  border-radius: 10px;
+}
+
+.exp-feature-check-svg {
+  width: 20px;
+  height: 20px;
+  color: var(--card-color);
+  flex-shrink: 0;
+}
+
+.exp-feature-text {
+  font-size: 0.9375rem;
+  color: #374151;
+  font-weight: 600;
+}
+
+.exp-card-button {
+  width: 100%;
+  padding: 1rem 2rem;
+  color: white;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.exp-card-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.exp-card-button:active {
+  transform: translateY(0);
+}
+
+.exp-button-arrow {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.exp-card-button:hover .exp-button-arrow {
+  transform: translateX(4px);
+}
+
+/* ========================================
+   Why Choose Us Section
+   ======================================== */
+.exp-why-choose {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+}
+
+@media (min-width: 768px) {
+  .exp-why-choose {
+    padding: 8rem 0;
+  }
+}
+
+.exp-why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .exp-why-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .exp-why-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.exp-why-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 1.5rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border: 2px solid #e0f2fe;
+  transition: all 0.3s ease;
+}
+
+.exp-why-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.15);
+  border-color: #667eea;
+}
+
+.exp-why-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  animation: pulse 2s ease-in-out infinite;
+  color: white;
+}
+
+.exp-why-item:hover .exp-why-icon-wrapper {
+  transform: scale(1.15) rotate(360deg);
+  animation: none;
+}
+
+.exp-why-svg-icon {
+  width: 48px;
+  height: 48px;
+  color: currentColor;
+}
+
+.exp-why-text {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #374151;
+  text-align: center;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .exp-why-text {
+    font-size: 1.0625rem;
+  }
+}
+
+/* ========================================
+   Booking Section
+   ======================================== */
+.exp-booking {
+  padding: 6rem 0;
+  background: white;
+}
+
+@media (min-width: 768px) {
+  .exp-booking {
+    padding: 8rem 0;
+  }
+}
+
+.exp-booking-card {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 30px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+}
+
+@media (min-width: 768px) {
+  .exp-booking-card {
+    padding: 4rem;
+  }
+}
+
+.exp-booking-icon-wrapper {
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.exp-booking-svg-icon {
+  width: 56px;
+  height: 56px;
+  color: white;
+  stroke-width: 2;
+}
+
+.exp-booking-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-bottom: 1.25rem;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  letter-spacing: -1px;
+}
+
+@media (min-width: 768px) {
+  .exp-booking-title {
+    font-size: 3rem;
+  }
+}
+
+.exp-booking-text {
+  font-size: 1.125rem;
+  margin-bottom: 2.5rem;
+  opacity: 0.95;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+@media (min-width: 768px) {
+  .exp-booking-text {
+    font-size: 1.3rem;
+  }
+}
+
+.exp-booking-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.exp-booking-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.125rem 2.5rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.exp-booking-button.whatsapp {
+  background: #25D366;
+  color: white;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+}
+
+.exp-booking-button.whatsapp:hover {
+  background: #20ba5a;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(37, 211, 102, 0.5);
+}
+
+.exp-booking-button.call {
+  background: white;
+  color: #667eea;
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+}
+
+.exp-booking-button.call:hover {
+  background: #f9fafb;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(255, 255, 255, 0.4);
+}
+
+.exp-booking-button:active {
+  transform: translateY(-1px);
+}
+
+.exp-button-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* ========================================
+   SEO Footer
+   ======================================== */
+.exp-seo-footer {
+  padding: 3.5rem 0;
+  background: #1f2937;
+  border-top: 4px solid #374151;
+}
+
+@media (min-width: 768px) {
+  .exp-seo-footer {
+    padding: 4rem 0;
+  }
+}
+
+.exp-seo-text {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin: 0;
+  max-width: 1100px;
+  margin: 0 auto;
+  font-weight: 400;
+}
+
+@media (min-width: 768px) {
+  .exp-seo-text {
+    font-size: 1.0625rem;
+  }
+}
+
+/* ========================================
+   Keyframe Animations
+   ======================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+    opacity: 0.8;
+  }
+}
+
+@keyframes iconFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 15px rgba(102, 126, 234, 0);
+  }
+}
+
+/* ========================================
+   Mobile Responsive
+   ======================================== */
+@media (max-width: 768px) {
+  .exp-hero {
+    min-height: 90vh;
+  }
+
+  .exp-hero-bg {
+    background-attachment: scroll;
+  }
+
+  .exp-hero-title {
+    font-size: 2.8rem;
+  }
+
+  .exp-hero-subtitle {
+    font-size: 1.3rem;
+  }
+
+  .exp-hero-icons {
+    gap: 1rem;
+  }
+
+  .exp-hero-icon-wrapper {
+    width: 70px;
+    height: 70px;
+  }
+
+  .exp-hero-icon-svg {
+    width: 35px;
+    height: 35px;
+  }
+
+  .exp-3d-sphere {
+    filter: blur(40px);
+  }
+
+  .exp-3d-sphere-1 {
+    width: 250px;
+    height: 250px;
+  }
+
+  .exp-3d-sphere-2 {
+    width: 300px;
+    height: 300px;
+  }
+
+  .exp-3d-sphere-3 {
+    width: 200px;
+    height: 200px;
+  }
+
+  .exp-3d-cube {
+    width: 150px;
+    height: 150px;
+  }
+
+  .exp-card-image {
+    height: 180px;
+  }
+
+  .exp-intro-highlight {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .exp-booking-buttons {
+    flex-direction: column;
+  }
+
+  .exp-booking-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .exp-container {
+    padding: 0 1rem;
+  }
+
+  .exp-hero-title {
+    font-size: 2.2rem;
+  }
+
+  .exp-hero-subtitle {
+    font-size: 1.15rem;
+  }
+
+  .exp-hero-icon-wrapper {
+    width: 60px;
+    height: 60px;
+  }
+
+  .exp-hero-icon-svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .exp-intro-title {
+    font-size: 2rem;
+  }
+
+  .exp-section-title {
+    font-size: 2.2rem;
+  }
+
+  .exp-card-content {
+    padding: 40px 1.5rem 1.5rem 1.5rem;
+  }
+
+  .exp-card-title {
+    font-size: 1.5rem;
+  }
+
+  .exp-booking-title {
+    font-size: 2rem;
+  }
+}
+
+/* ========================================
+   Accessibility & Reduced Motion
+   ======================================== */
+.exp-card-button:focus-visible,
+.exp-booking-button:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 4px;
+}
+
+.exp-category-card:focus-within {
+  outline: 2px solid var(--card-color);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ========================================
+   Print Styles
+   ======================================== */
+@media print {
+  .exp-3d-background,
+  .exp-hero-bg,
+  .exp-booking-buttons {
+    display: none;
+  }
+
+  .exp-hero-overlay {
+    opacity: 0.3;
+  }
+
+  .explore-packages {
+    background: white;
+  }
+}

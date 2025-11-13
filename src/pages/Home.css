@@ -1,9 +1,15 @@
-/* Home Page Styles */
+/* ========================================
+   HOME PAGE - COMPLETE WORKING STYLES
+   Sastha Tours & Travels
+   ======================================== */
+
 .home {
   background-color: #f9fafb;
 }
 
-/* Hero Section */
+/* ========================================
+   Hero Section
+   ======================================== */
 .hero {
   position: relative;
   background-size: cover;
@@ -57,9 +63,7 @@
   align-items: center;
   gap: 1rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  animation: fadeInDown 0.8s ease-out;
-  opacity: 0;
-  animation-fill-mode: forwards;
+  animation: fadeInDown 0.8s ease-out both;
   margin-bottom: 2rem;
 }
 
@@ -131,7 +135,7 @@
   }
 }
 
-/* Hero Main Content Wrapper */
+/* Hero Main Content */
 .hero-main-content {
   display: flex;
   flex-direction: column;
@@ -158,9 +162,7 @@
   font-weight: bold;
   margin-bottom: 1rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-  animation: fadeInUp 1s ease-out 0.2s;
-  opacity: 0;
-  animation-fill-mode: forwards;
+  animation: fadeInUp 1s ease-out 0.2s both;
   line-height: 1.2;
 }
 
@@ -181,9 +183,7 @@
   font-weight: 600;
   margin-bottom: 1.5rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-  animation: fadeInUp 1.2s ease-out 0.4s;
-  opacity: 0;
-  animation-fill-mode: forwards;
+  animation: fadeInUp 1.2s ease-out 0.4s both;
   line-height: 1.3;
 }
 
@@ -205,9 +205,7 @@
   max-width: 700px;
   line-height: 1.6;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-  animation: fadeInUp 1.4s ease-out 0.6s;
-  opacity: 0;
-  animation-fill-mode: forwards;
+  animation: fadeInUp 1.4s ease-out 0.6s both;
 }
 
 @media (min-width: 768px) {
@@ -216,7 +214,7 @@
   }
 }
 
-/* Explore Packages Button */
+/* Explore Button */
 .explore-btn {
   background-color: #ff5722;
   color: white;
@@ -231,9 +229,7 @@
   gap: 0.5rem;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(255, 87, 34, 0.4);
-  animation: fadeInUp 1.6s ease-out 0.8s;
-  opacity: 0;
-  animation-fill-mode: forwards;
+  animation: fadeInUp 1.6s ease-out 0.8s both;
 }
 
 .explore-btn:hover {
@@ -250,7 +246,9 @@
   transform: translateX(4px);
 }
 
-/* Animation Keyframes */
+/* ========================================
+   Animation Keyframes
+   ======================================== */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -262,10 +260,46 @@
   }
 }
 
-/* --- Services Carousel Styles --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInSection {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ========================================
+   Services Carousel Section
+   ======================================== */
 .benefits {
   background-color: white;
   padding: 4rem 0;
+  animation: fadeInSection 1s ease-out 0.2s both;
 }
 
 .benefits-wrapper {
@@ -279,7 +313,7 @@
   gap: 2rem;
   overflow-x: auto;
   scroll-behavior: smooth;
-  padding: 0 1rem; 
+  padding: 0 1rem;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -294,7 +328,7 @@
   padding: 2rem 1.5rem;
   border: 1px solid #e5e7eb;
   border-radius: 0.75rem;
-  box-shadow: 0 4px 6px rgba(138, 137, 137, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   flex: 0 0 90%;
   min-width: 280px;
   min-height: 280px;
@@ -307,7 +341,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  animation: cardFadeIn 0.6s ease-out both;
 }
+
+.benefit-card:nth-child(1) { animation-delay: 0.1s; }
+.benefit-card:nth-child(2) { animation-delay: 0.2s; }
+.benefit-card:nth-child(3) { animation-delay: 0.3s; }
+.benefit-card:nth-child(4) { animation-delay: 0.4s; }
+.benefit-card:nth-child(5) { animation-delay: 0.5s; }
+.benefit-card:nth-child(6) { animation-delay: 0.6s; }
+.benefit-card:nth-child(7) { animation-delay: 0.7s; }
+.benefit-card:nth-child(8) { animation-delay: 0.8s; }
 
 .benefit-card::before {
   content: '';
@@ -319,19 +363,19 @@
 }
 
 .benefit-card:hover::before {
-  background: linear-gradient(135deg, rgba(78, 77, 77, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%);
 }
 
 .benefit-card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(89, 88, 88, 0.3), rgba(0, 0, 0, 0.7));
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
   z-index: 1;
   transition: all 0.3s ease;
 }
 
 .benefit-card:hover .benefit-card-overlay {
-  background: linear-gradient(to bottom, rgba(101, 100, 100, 0.2), rgba(0, 0, 0, 0.6));
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6));
 }
 
 .benefit-card-content {
@@ -342,10 +386,45 @@
 
 .benefit-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(74, 74, 74, 0.2);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
-/* --- CORRECTED .scroll-arrow RULE --- */
+.benefit-title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.75rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.benefit-text {
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.benefit-link {
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1.25rem;
+  background-color: rgba(37, 99, 235, 0.9);
+  border-radius: 0.375rem;
+  display: inline-block;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+  border: none;
+  cursor: pointer;
+}
+
+.benefit-link:hover {
+  background-color: rgba(29, 78, 216, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.5);
+}
+
+/* Scroll Arrows */
 .scroll-arrow {
   position: absolute;
   top: 50%;
@@ -356,12 +435,12 @@
   border-radius: 50%;
   width: 2.5rem;
   height: 2.5rem;
+  display: none;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   color: #6b7280;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: none;
   transition: all 0.3s ease;
 }
 
@@ -413,43 +492,12 @@
   }
 }
 
-.benefit-title {
-  font-size: 1.375rem;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 0.75rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.benefit-text {
-  color: rgba(255, 255, 255, 0.95);
-  margin-bottom: 1.25rem;
-  line-height: 1.5;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-}
-
-.benefit-link {
-  color: white;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  padding: 0.5rem 1.25rem;
-  background-color: rgba(37, 99, 235, 0.9);
-  border-radius: 0.375rem;
-  display: inline-block;
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
-}
-
-.benefit-link:hover {
-  background-color: rgba(29, 78, 216, 1);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.5);
-}
-
-
-/* --- Featured Section Styles --- */
+/* ========================================
+   Featured Destinations Section
+   ======================================== */
 .featured {
   padding: 4rem 0;
+  animation: fadeInSection 1s ease-out 0.4s both;
 }
 
 .featured-container {
@@ -512,12 +560,10 @@
   color: #1e40af;
 }
 
-/* --- Wrapper for Destinations Carousel --- */
 .destinations-wrapper {
   position: relative;
 }
 
-/* --- Destinations Grid (Carousel) --- */
 .destinations-grid {
   display: flex;
   gap: 1.5rem;
@@ -542,7 +588,14 @@
   transform: scale(1);
   transition: all 0.3s ease;
   cursor: pointer;
+  animation: cardFadeIn 0.6s ease-out both;
 }
+
+.destination-card:nth-child(1) { animation-delay: 0.1s; }
+.destination-card:nth-child(2) { animation-delay: 0.2s; }
+.destination-card:nth-child(3) { animation-delay: 0.3s; }
+.destination-card:nth-child(4) { animation-delay: 0.4s; }
+.destination-card:nth-child(5) { animation-delay: 0.5s; }
 
 @media (min-width: 640px) {
   .destination-card {
@@ -559,9 +612,9 @@
 
   .destinations-wrapper .scroll-arrow {
     display: flex;
-    left: 0.5rem; 
+    left: 0.5rem;
   }
-  
+
   .destinations-wrapper .scroll-arrow.right {
     left: auto;
     right: 0.5rem;
@@ -581,7 +634,6 @@
     min-width: 380px;
   }
 }
-
 
 .destination-card:hover {
   transform: scale(1.05);
@@ -644,10 +696,13 @@
   margin-left: 0.25rem;
 }
 
-/* --- Services Features Section Styles --- */
+/* ========================================
+   Services Features Section
+   ======================================== */
 .services-features {
   background-color: white;
   padding: 5rem 0;
+  animation: fadeInSection 1s ease-out 0.6s both;
 }
 
 .services-features-container {
@@ -697,11 +752,9 @@
   padding: 1rem;
   border-radius: 0.5rem;
   transition: all 0.3s ease;
-  animation: fadeInUp 0.6s ease-out;
-  animation-fill-mode: both;
+  animation: fadeInUp 0.6s ease-out both;
 }
 
-/* Staggered animation for each item */
 .feature-item:nth-child(1) { animation-delay: 0.1s; }
 .feature-item:nth-child(2) { animation-delay: 0.2s; }
 .feature-item:nth-child(3) { animation-delay: 0.3s; }
@@ -755,7 +808,6 @@
   }
 }
 
-/* Pulse animation for icons */
 @keyframes pulse {
   0%, 100% {
     box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
@@ -765,17 +817,13 @@
   }
 }
 
-/* --- Happy Customers Section Styles --- */
+/* ========================================
+   Happy Customers Section - FIXED
+   ======================================== */
 .happy-customers {
   background-color: #f9fafb;
   padding: 4rem 0 6rem 0;
   overflow: hidden;
-}
-
-.customers-container {
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
 }
 
 .customers-middle-content {
@@ -801,15 +849,28 @@
 }
 
 .customers-title-purple {
-  color: #7c3aed;
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: instagramGradient 3s ease infinite;
 }
 
-.customers-title-orange {
-  color: #f97316;
+@keyframes instagramGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .view-instagram-btn {
-  background-color: #25d366;
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
   color: white;
   border: none;
   padding: 0.875rem 2rem;
@@ -818,24 +879,65 @@
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+  box-shadow: 0 4px 12px rgba(188, 24, 136, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  background-size: 200% 200%;
+  animation: instagramButtonGradient 3s ease infinite;
+}
+
+.view-instagram-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.view-instagram-btn:hover::before {
+  left: 100%;
 }
 
 .view-instagram-btn:hover {
-  background-color: #20bd5a;
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+  box-shadow: 0 6px 20px rgba(188, 24, 136, 0.5);
+}
+
+@keyframes instagramButtonGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.instagram-icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
 }
 
 .customers-carousel-wrapper {
   margin-bottom: 0;
   overflow: hidden;
+  width: 100%;
 }
 
 .customers-carousel {
   display: flex;
   gap: 1.5rem;
   width: max-content;
+  will-change: transform;
 }
 
 .customer-image-card {
@@ -857,9 +959,10 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
-/* Animation for first row - Right to Left */
+/* First row - Scroll Right to Left (starts at 0%) */
 .scroll-right-to-left {
   animation: scrollRightToLeft 30s linear infinite;
 }
@@ -870,16 +973,17 @@
 
 @keyframes scrollRightToLeft {
   0% {
-    transform: translateX(0);
+    transform: translateX(0%);
   }
   100% {
     transform: translateX(-50%);
   }
 }
 
-/* Animation for second row - Left to Right */
+/* Second row - Scroll Left to Right (starts at -50%) */
 .scroll-left-to-right {
   animation: scrollLeftToRight 30s linear infinite;
+  transform: translateX(-50%);
 }
 
 .scroll-left-to-right:hover {
@@ -891,6 +995,18 @@
     transform: translateX(-50%);
   }
   100% {
-    transform: translateX(0);
+    transform: translateX(0%);
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .customer-image-card {
+    width: 220px;
+    height: 160px;
+  }
+  
+  .customers-carousel {
+    gap: 1rem;
   }
 }

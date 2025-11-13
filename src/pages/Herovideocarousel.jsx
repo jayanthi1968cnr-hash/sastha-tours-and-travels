@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom'; // Add this import
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import './Herovideocarousel.css';
 
@@ -35,6 +36,7 @@ const videos = [
 ];
 
 const HeroVideoCarousel = () => {
+  const navigate = useNavigate(); // Add this hook
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [loadedVideos, setLoadedVideos] = useState(new Set());
@@ -42,6 +44,11 @@ const HeroVideoCarousel = () => {
   const video1Ref = useRef(null);
   const video2Ref = useRef(null);
   const [activePlayer, setActivePlayer] = useState(1); // Which video element is currently visible
+
+  // Add call handler
+  const handleCallClick = () => {
+    window.location.href = 'tel:+919342512112';
+  };
 
   // Preload first video on mount
   useEffect(() => {
@@ -71,7 +78,7 @@ const HeroVideoCarousel = () => {
       clearTimeout(fallbackTimer);
       firstVideo.removeEventListener('canplaythrough', handleCanPlay);
     };
-  }, []);
+  }, [isLoading]);
 
   // Preload next video in background
   useEffect(() => {
@@ -205,7 +212,7 @@ const HeroVideoCarousel = () => {
           {/* White Contact Banner */}
           <div className="contact-banner">
             <span className="contact-text">Feel free to connect with us</span>
-            <button className="call-btn">
+            <button className="call-btn" onClick={handleCallClick}>
               <svg className="phone-icon" fill="currentColor" viewBox="0 0 24 24" width="18" height="18">
                 <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
               </svg>
@@ -224,10 +231,13 @@ const HeroVideoCarousel = () => {
             <p className="hero-video-description" key={`desc-${currentIndex}`}>
               {videos[currentIndex].description}
               <br />
-              Discover breathtaking destinations with Vimal Travels.
+              Discover breathtaking destinations with Sastha Travels.
             </p>
             
-            <button className="explore-packages-btn">
+            <button 
+              className="explore-packages-btn"
+              onClick={() => navigate('/explore-packages')}
+            >
               Explore Packages
               <ChevronRight className="btn-arrow" size={20} />
             </button>

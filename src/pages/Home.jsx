@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; 
-import { Search, Users, Plus, Minus, ChevronLeft, ChevronRight } from 'lucide-react';
-import HeroVideoCarousel from './Herovideocarousel'; // Import the new component
+import { useNavigate } from 'react-router-dom';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import HeroVideoCarousel from './Herovideocarousel';
 import './Home.css';
 
 // Data for Featured Destinations
@@ -33,61 +33,81 @@ const allDestinationsData = {
     { id: 14, name: 'Lonavala Conference', location: 'Maharashtra, India', price: '₹13,000', image: 'https://images.unsplash.com/photo-1498307833015-e7b400441eb8?w=400&auto=format&fit=crop' },
   ]
 };
+
 const categories = ['All', 'Mountains', 'Water Falls', 'Hiking', 'Camp fire', 'Family Night', 'Corporate Corner'];
 
 const Home = () => {
   const navigate = useNavigate();
+  
+  // WhatsApp and Call handlers
+  const handleWhatsAppClick = () => {
+    const phoneNumber = '919342512112';
+    const message = encodeURIComponent('Hi, I would like to get a quote for your travel services.');
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+  };
+
+  const handleCallClick = () => {
+    window.location.href = 'tel:+919342512112';
+  };
 
   // State and ref for Services Carousel
   const servicesScrollRef = useRef(null);
-  const [services, setServices] = useState([
+  const [services] = useState([
     { 
-      title: 'Travel adds up', 
-      description: 'Stay 10 nights, get a reward night to use however you like.', 
-      buttonText: 'How it works',
-      image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&auto=format&fit=crop'
+      title: 'International Tours', 
+      description: 'Explore the world with our expertly crafted international packages.', 
+      buttonText: 'View Packages',
+      image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&auto=format&fit=crop',
+      link: '/international-tour'
     },
     { 
-      title: 'Stays that deliver', 
-      description: 'Traveller-favourite VIP Access stays come with high ratings and perks.', 
-      buttonText: 'Explore stays',
-      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&auto=format&fit=crop'
+      title: 'Domestic Adventures', 
+      description: 'Discover India\'s beauty with our curated domestic tour packages.', 
+      buttonText: 'Explore Tours',
+      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&auto=format&fit=crop',
+      link: '/domestic-tour'
     },
     { 
-      title: 'Plans change. We get it.', 
-      description: 'Flexible booking options so you can adjust or cancel easily.', 
-      buttonText: 'Search now',
-      image: 'https://images.unsplash.com/photo-1554224311-beee2ece0e0a?w=600&auto=format&fit=crop'
+      title: 'Passport & Visa', 
+      description: 'Hassle-free passport and visa assistance for your travels.', 
+      buttonText: 'Get Help',
+      image: 'https://images.unsplash.com/photo-1554224311-beee2ece0e0a?w=600&auto=format&fit=crop',
+      link: '/passport-visa'
     },
     { 
-      title: 'Flight Up & Down', 
-      description: 'Book your round-trip flights with flexible options.', 
-      buttonText: 'Book Flights',
-      image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&auto=format&fit=crop'
+      title: 'Flight Bookings', 
+      description: 'Book flights at the best prices with our expert assistance.', 
+      buttonText: 'Book Now',
+      image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&auto=format&fit=crop',
+      link: '/flight-booking'
     },
     { 
-      title: '5-Star Hotels', 
-      description: 'Find luxury stays with top-rated amenities.', 
-      buttonText: 'See Hotels',
-      image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600&auto=format&fit=crop'
+      title: 'Premium Hotels', 
+      description: 'Luxury accommodations and budget-friendly stays for every traveler.', 
+      buttonText: 'View Hotels',
+      image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600&auto=format&fit=crop',
+      link: '/hotel-booking'
     },
     { 
-      title: 'Local Guides', 
-      description: 'Explore like a local with our expert guides.', 
-      buttonText: 'Find Guides',
-      image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&auto=format&fit=crop'
+      title: 'Local Transport', 
+      description: 'Comfortable and reliable transport for all your local travel needs.', 
+      buttonText: 'Book Ride',
+      image: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&auto=format&fit=crop',
+      link: '/local-transport'
     },
     { 
-      title: 'Local Travels', 
-      description: 'Book cars, cabs, and transfers with ease.', 
-      buttonText: 'Book Rides',
-      image: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&auto=format&fit=crop'
+      title: 'Catering Services', 
+      description: 'Delicious food delivered fresh for your events and tours.', 
+      buttonText: 'Order Now',
+      image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&auto=format&fit=crop',
+      link: '/catering'
     },
     { 
-      title: 'Food & Yummy Snacks', 
-      description: 'Discover the best local cuisine and food tours.', 
-      buttonText: 'Explore Food',
-      image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&auto=format&fit=crop'
+      title: 'Restaurant', 
+      description: 'Fresh, homely meals delivered wherever you are.', 
+      buttonText: 'View Menu',
+      image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&auto=format&fit=crop',
+      link: '/restaurant'
     }
   ]);
   
@@ -96,22 +116,55 @@ const Home = () => {
   const [displayedDestinations, setDisplayedDestinations] = useState([]);
   const destinationsScrollRef = useRef(null);
 
+  // Refs for animation on scroll
+  const servicesRef = useRef(null);
+  const featuredRef = useRef(null);
+  const servicesFeaturesRef = useRef(null);
+
+  // Intersection Observer for animations
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    if (servicesRef.current) observer.observe(servicesRef.current);
+    if (featuredRef.current) observer.observe(featuredRef.current);
+    if (servicesFeaturesRef.current) observer.observe(servicesFeaturesRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
   // Services Carousel Auto-scroll Effect
   useEffect(() => {
     const scrollContainer = servicesScrollRef.current;
     if (!scrollContainer) return;
+    
     const scrollInterval = setInterval(() => {
       const cardWidth = scrollContainer.scrollWidth / services.length;
       const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
       let nextScroll = scrollContainer.scrollLeft + cardWidth;
-      if (nextScroll > maxScroll) {
+      
+      if (nextScroll >= maxScroll) {
         nextScroll = 0;
       }
+      
       scrollContainer.scrollTo({
         left: nextScroll,
         behavior: 'smooth',
       });
     }, 4000);
+    
     return () => clearInterval(scrollInterval);
   }, [services.length]);
 
@@ -145,7 +198,7 @@ const Home = () => {
       if (!card) return;
       const cardWidth = card.offsetWidth;
       const gap = parseInt(window.getComputedStyle(destinationsScrollRef.current).gap, 10) || 24;
-      const scrollAmount = (cardWidth + gap) * 4;
+      const scrollAmount = (cardWidth + gap) * 2;
       if (direction === 'left') {
         destinationsScrollRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
       } else {
@@ -157,7 +210,8 @@ const Home = () => {
   // Auto-scroll for Destinations Carousel
   useEffect(() => {
     const scrollContainer = destinationsScrollRef.current;
-    if (!scrollContainer) return;
+    if (!scrollContainer || displayedDestinations.length === 0) return;
+    
     const scrollInterval = setInterval(() => {
       const card = scrollContainer.querySelector('.destination-card');
       if (!card) return;
@@ -166,27 +220,31 @@ const Home = () => {
       const scrollAmount = cardWidth + gap;
       const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
       let nextScroll = scrollContainer.scrollLeft + scrollAmount;
-      if (nextScroll > maxScroll - 1) {
+      
+      if (nextScroll >= maxScroll - 10) {
         nextScroll = 0;
       }
+      
       scrollContainer.scrollTo({
         left: nextScroll,
         behavior: 'smooth',
       });
     }, 4000);
+    
     return () => clearInterval(scrollInterval);
   }, [displayedDestinations]);
 
-
   return (
     <div className="home">
-      {/* Hero Video Carousel Section - REPLACES old hero */}
+      {/* Hero Video Carousel Section */}
       <HeroVideoCarousel />
 
       {/* Services Carousel Section */}
-      <section className="benefits">
+      <section className="benefits" ref={servicesRef}>
         <div className="benefits-wrapper">
-          <button className="scroll-arrow left" onClick={() => handleServiceScroll('left')}><ChevronLeft size={24} /></button>
+          <button className="scroll-arrow left" onClick={() => handleServiceScroll('left')} aria-label="Scroll left">
+            <ChevronLeft size={24} />
+          </button>
           <div className="benefits-container" ref={servicesScrollRef}>
             {services.map((service, index) => (
               <div className="benefit-card" key={index} style={{ backgroundImage: `url(${service.image})` }}>
@@ -194,17 +252,24 @@ const Home = () => {
                 <div className="benefit-card-content">
                   <h3 className="benefit-title">{service.title}</h3>
                   <p className="benefit-text">{service.description}</p>
-                  <a href="#" className="benefit-link">{service.buttonText}</a>
+                  <button 
+                    className="benefit-link" 
+                    onClick={() => navigate(service.link)}
+                  >
+                    {service.buttonText}
+                  </button>
                 </div>
               </div>
             ))}
           </div>
-          <button className="scroll-arrow right" onClick={() => handleServiceScroll('right')}><ChevronRight size={24} /></button>
+          <button className="scroll-arrow right" onClick={() => handleServiceScroll('right')} aria-label="Scroll right">
+            <ChevronRight size={24} />
+          </button>
         </div>
       </section>
 
       {/* Featured Destinations Section */}
-      <section className="featured">
+      <section className="featured" ref={featuredRef}>
         <div className="featured-container">
           <h2 className="featured-title">Your style. These stays. A perfect match.</h2>
           <p className="featured-subtitle">Average prices based on current calendar month</p>
@@ -222,7 +287,7 @@ const Home = () => {
           </div>
           
           <div className="destinations-wrapper">
-            <button className="scroll-arrow left" onClick={() => handleDestinationScroll('left')}>
+            <button className="scroll-arrow left" onClick={() => handleDestinationScroll('left')} aria-label="Scroll destinations left">
               <ChevronLeft size={24} />
             </button>
             <div className="destinations-grid" ref={destinationsScrollRef}>
@@ -240,7 +305,7 @@ const Home = () => {
                 </div>
               ))}
             </div>
-            <button className="scroll-arrow right" onClick={() => handleDestinationScroll('right')}>
+            <button className="scroll-arrow right" onClick={() => handleDestinationScroll('right')} aria-label="Scroll destinations right">
               <ChevronRight size={24} />
             </button>
           </div>
@@ -248,11 +313,11 @@ const Home = () => {
       </section>
 
       {/* Services Features Section */}
-      <section className="services-features">
+      <section className="services-features" ref={servicesFeaturesRef}>
         <div className="services-features-container">
           <h2 className="services-features-title">With Sastha Tour's & Travels you can get:</h2>
           <div className="features-grid">
-            <div className="feature-item">
+            <div className="feature-item" onClick={() => navigate('/international-tour')} style={{ cursor: 'pointer' }}>
               <div className="feature-icon-wrapper">
                 <svg className="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -261,7 +326,7 @@ const Home = () => {
               <span className="feature-text">International Tour Package</span>
             </div>
             
-            <div className="feature-item">
+            <div className="feature-item" onClick={() => navigate('/passport-visa')} style={{ cursor: 'pointer' }}>
               <div className="feature-icon-wrapper">
                 <svg className="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
@@ -270,7 +335,7 @@ const Home = () => {
               <span className="feature-text">Passport & Visa Assistance</span>
             </div>
             
-            <div className="feature-item">
+            <div className="feature-item" onClick={() => navigate('/domestic-tour')} style={{ cursor: 'pointer' }}>
               <div className="feature-icon-wrapper">
                 <svg className="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
@@ -278,9 +343,9 @@ const Home = () => {
                 </svg>
               </div>
               <span className="feature-text">Domestic Tour Packages</span>
-              </div>
+            </div>
             
-            <div className="feature-item">
+            <div className="feature-item" onClick={() => navigate('/hotel-booking')} style={{ cursor: 'pointer' }}>
               <div className="feature-icon-wrapper">
                 <svg className="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
@@ -289,7 +354,7 @@ const Home = () => {
               <span className="feature-text">Hotel Room Bookings</span>
             </div>
             
-            <div className="feature-item">
+            <div className="feature-item" onClick={() => navigate('/catering')} style={{ cursor: 'pointer' }}>
               <div className="feature-icon-wrapper">
                 <svg className="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/>
@@ -298,7 +363,7 @@ const Home = () => {
               <span className="feature-text">Catering Services</span>
             </div>
             
-            <div className="feature-item">
+            <div className="feature-item" onClick={() => navigate('/flight-booking')} style={{ cursor: 'pointer' }}>
               <div className="feature-icon-wrapper">
                 <svg className="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
@@ -307,7 +372,7 @@ const Home = () => {
               <span className="feature-text">Flight Booking</span>
             </div>
             
-            <div className="feature-item">
+            <div className="feature-item" onClick={() => navigate('/local-transport')} style={{ cursor: 'pointer' }}>
               <div className="feature-icon-wrapper">
                 <svg className="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
@@ -316,7 +381,7 @@ const Home = () => {
               <span className="feature-text">Local Transport</span>
             </div>
             
-            <div className="feature-item">
+            <div className="feature-item" onClick={() => navigate('/restaurant')} style={{ cursor: 'pointer' }}>
               <div className="feature-icon-wrapper">
                 <svg className="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
@@ -330,76 +395,81 @@ const Home = () => {
 
       {/* Happy Customers Section */}
       <section className="happy-customers">
-        <div className="customers-container">
-          {/* First Row - Scroll Right to Left */}
-          <div className="customers-carousel-wrapper">
-            <div className="customers-carousel scroll-right-to-left">
-              {[
-                'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=400&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&auto=format&fit=crop',
-              ].map((img, idx) => (
-                <div key={idx} className="customer-image-card">
-                  <img src={img} alt={`Customer ${idx + 1}`} />
-                </div>
-              ))}
-              {/* Duplicate for seamless loop */}
-              {[
-                'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=400&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&auto=format&fit=crop',
-              ].map((img, idx) => (
-                <div key={`dup1-${idx}`} className="customer-image-card">
-                  <img src={img} alt={`Customer duplicate ${idx + 1}`} />
-                </div>
-              ))}
-            </div>
+        {/* First Row - Scroll Right to Left */}
+        <div className="customers-carousel-wrapper">
+          <div className="customers-carousel scroll-right-to-left">
+            {[
+              '/assets/images/customer-1.jpeg',
+              '/assets/images/customer-2.jpeg',
+              '/assets/images/customer-3.jpeg',
+              '/assets/images/customer-4.jpeg',
+              '/assets/images/customer-5.jpeg',
+              '/assets/images/customer-6.jpeg',
+            ].map((img, idx) => (
+              <div key={idx} className="customer-image-card">
+                <img src={img} alt={`Customer ${idx + 1}`} />
+              </div>
+            ))}
+            {/* Duplicate for seamless loop */}
+            {[
+              '/assets/images/customer-1.jpeg',
+              '/assets/images/customer-2.jpeg',
+              '/assets/images/customer-3.jpeg',
+              '/assets/images/customer-4.jpeg',
+              '/assets/images/customer-5.jpeg',
+              '/assets/images/customer-6.jpeg',
+            ].map((img, idx) => (
+              <div key={`dup1-${idx}`} className="customer-image-card">
+                <img src={img} alt={`Customer duplicate ${idx + 1}`} />
+              </div>
+            ))}
           </div>
+        </div>
 
-          {/* Title and Button in the Middle */}
-          <div className="customers-middle-content">
-            <h2 className="customers-title">
-              <span className="customers-title-purple">Happy Customers,</span>{' '}
-              <span className="customers-title-orange">Happy Stories</span>
-            </h2>
-            <button className="view-instagram-btn">View Instagram</button>
-          </div>
+        {/* Title and Button in the Middle */}
+        <div className="customers-middle-content">
+          <h2 className="customers-title">
+            <span className="customers-title-purple">Where Happy Guests Become Family</span>
+          </h2>
+          <button 
+            className="view-instagram-btn" 
+            onClick={() => window.open('https://www.instagram.com/sasth_a03/#', '_blank')}
+          >
+            <svg className="instagram-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+            Discover on Instagram
+          </button>
+        </div>
 
-          {/* Second Row - Scroll Left to Right */}
-          <div className="customers-carousel-wrapper">
-            <div className="customers-carousel scroll-left-to-right">
-              {[
-                'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=400&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=400&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop',
-              ].map((img, idx) => (
-                <div key={idx} className="customer-image-card">
-                  <img src={img} alt={`Customer ${idx + 7}`} />
-                </div>
-              ))}
-              {/* Duplicate for seamless loop */}
-              {[
-                'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=400&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=400&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop',
-              ].map((img, idx) => (
-                <div key={`dup2-${idx}`} className="customer-image-card">
-                  <img src={img} alt={`Customer duplicate ${idx + 7}`} />
-                </div>
-              ))}
-            </div>
+        {/* Second Row - Scroll Left to Right */}
+        <div className="customers-carousel-wrapper">
+          <div className="customers-carousel scroll-left-to-right">
+            {[
+              '/assets/images/customer-7.jpeg',
+              '/assets/images/customer-8.jpeg',
+              '/assets/images/customer-9.jpeg',
+              '/assets/images/customer-10.jpeg',
+              '/assets/images/customer-11.jpeg',
+              '/assets/images/customer-12.jpeg',
+            ].map((img, idx) => (
+              <div key={idx} className="customer-image-card">
+                <img src={img} alt={`Customer ${idx + 7}`} />
+              </div>
+            ))}
+            {/* Duplicate for seamless loop */}
+            {[
+              '/assets/images/customer-7.jpeg',
+              '/assets/images/customer-8.jpeg',
+              '/assets/images/customer-9.jpeg',
+              '/assets/images/customer-10.jpeg',
+              '/assets/images/customer-11.jpeg',
+              '/assets/images/customer-12.jpeg',
+            ].map((img, idx) => (
+              <div key={`dup2-${idx}`} className="customer-image-card">
+                <img src={img} alt={`Customer duplicate ${idx + 7}`} />
+              </div>
+            ))}
           </div>
         </div>
       </section>

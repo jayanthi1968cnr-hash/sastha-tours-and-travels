@@ -1,0 +1,975 @@
+/* ========================================
+   Restaurant - Premium CSS
+   ======================================== */
+
+/* Reset and Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.restaurant {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+/* Container */
+.rest-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (min-width: 768px) {
+  .rest-container {
+    padding: 0 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rest-container {
+    padding: 0 4rem;
+  }
+}
+
+/* ========================================
+   3D Background Elements
+   ======================================== */
+.rest-3d-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.rest-3d-sphere {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(239, 68, 68, 0.12), rgba(220, 38, 38, 0.06));
+  filter: blur(60px);
+  animation: float3D 20s ease-in-out infinite;
+}
+
+.rest-3d-sphere-1 {
+  width: 400px;
+  height: 400px;
+  top: 15%;
+  left: -10%;
+}
+
+.rest-3d-sphere-2 {
+  width: 500px;
+  height: 500px;
+  top: 55%;
+  right: -15%;
+  animation-delay: 7s;
+}
+
+.rest-3d-sphere-3 {
+  width: 350px;
+  height: 350px;
+  bottom: 15%;
+  left: 45%;
+  animation-delay: 14s;
+}
+
+@keyframes float3D {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-40px) translateX(30px);
+  }
+}
+
+/* ========================================
+   Hero Section - Very Light Overlay
+   ======================================== */
+.rest-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.rest-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: 0;
+}
+
+/* Very light overlay - 0.25 opacity for maximum visibility */
+.rest-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(68, 239, 228, 0.25) 0%, rgba(38, 184, 220, 0.2) 100%);
+  z-index: 1;
+}
+
+.rest-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  padding: 40px 20px;
+  max-width: 1200px;
+  animation: fadeInUp 1s ease-out;
+}
+
+.rest-hero-icon-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.rest-utensils-icon {
+  width: 80px;
+  height: 80px;
+  color: white;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@media (min-width: 768px) {
+  .rest-utensils-icon {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.rest-hero-title {
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  line-height: 1.1;
+  letter-spacing: -2px;
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+@media (min-width: 768px) {
+  .rest-hero-title {
+    font-size: 5.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rest-hero-title {
+    font-size: 6.5rem;
+  }
+}
+
+.rest-hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  opacity: 0.95;
+  animation: fadeInUp 1s ease-out 0.4s both;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .rest-hero-subtitle {
+    font-size: 1.8rem;
+  }
+}
+
+/* ========================================
+   Description Section
+   ======================================== */
+.rest-description {
+  padding: 6rem 0;
+  background: linear-gradient(180deg, #fef2f2 0%, #ffffff 100%);
+}
+
+@media (min-width: 768px) {
+  .rest-description {
+    padding: 8rem 0;
+  }
+}
+
+.rest-description-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.rest-description-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+@media (min-width: 768px) {
+  .rest-description-title {
+    font-size: 3rem;
+  }
+}
+
+.rest-description-text {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #4b5563;
+  margin-bottom: 3rem;
+  font-weight: 400;
+}
+
+@media (min-width: 768px) {
+  .rest-description-text {
+    font-size: 1.25rem;
+    line-height: 2;
+  }
+}
+
+.rest-description-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.rest-stat-item-small {
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(239, 68, 68, 0.3);
+  transition: transform 0.3s ease;
+  color: white;
+  text-align: center;
+}
+
+.rest-stat-item-small:hover {
+  transform: translateY(-8px);
+}
+
+.rest-stat-icon-svg {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 0.75rem;
+  stroke-width: 2;
+}
+
+.rest-stat-number-small {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.rest-stat-label-small {
+  font-size: 1rem;
+  opacity: 0.9;
+  font-weight: 600;
+}
+
+/* ========================================
+   Section Title
+   ======================================== */
+.rest-section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 4rem;
+  color: #111827;
+  position: relative;
+  padding-bottom: 1.5rem;
+  letter-spacing: -1px;
+}
+
+@media (min-width: 768px) {
+  .rest-section-title {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rest-section-title {
+    font-size: 3.75rem;
+  }
+}
+
+.rest-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 5px;
+  background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%);
+  border-radius: 3px;
+}
+
+/* ========================================
+   Delivery Areas Section
+   ======================================== */
+.rest-delivery-section {
+  padding: 4rem 0;
+  background: white;
+  border-top: 2px solid #f3f4f6;
+  border-bottom: 2px solid #f3f4f6;
+}
+
+.rest-delivery-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  color: #374151;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.rest-delivery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.rest-delivery-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem 1rem;
+  background: white;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  border: 2px solid #f3f4f6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.rest-delivery-item:hover {
+  background: #fef2f2;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.15);
+  border-color: #ef4444;
+}
+
+.rest-delivery-icon {
+  width: 32px;
+  height: 32px;
+  color: #ef4444;
+  stroke-width: 2;
+}
+
+.rest-delivery-name {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #374151;
+  text-align: center;
+}
+
+/* ========================================
+   Menu Section with Cards
+   ======================================== */
+.rest-menu {
+  padding: 6rem 0;
+  background: white;
+}
+
+@media (min-width: 768px) {
+  .rest-menu {
+    padding: 8rem 0;
+  }
+}
+
+.rest-menu-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .rest-menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .rest-menu-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.rest-menu-card {
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+  border: 2px solid #f3f4f6;
+}
+
+.rest-menu-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 25px 60px rgba(239, 68, 68, 0.15);
+  border-color: #ef4444;
+}
+
+.rest-menu-image {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+}
+
+.rest-menu-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.rest-menu-card:hover .rest-menu-image img {
+  transform: scale(1.1);
+}
+
+.rest-menu-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(239, 68, 68, 0.7) 0%, transparent 60%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rest-menu-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease;
+}
+
+.rest-menu-card:hover .rest-menu-icon-wrapper {
+  transform: scale(1.15) rotate(10deg);
+}
+
+.rest-menu-icon-svg {
+  width: 32px;
+  height: 32px;
+  color: #ef4444;
+  stroke-width: 2;
+}
+
+.rest-popular-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
+  z-index: 2;
+}
+
+.rest-star-icon {
+  width: 16px;
+  height: 16px;
+  fill: white;
+}
+
+.rest-menu-content {
+  padding: 2rem;
+}
+
+.rest-menu-name {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.5px;
+}
+
+.rest-menu-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+.rest-menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  max-height: 240px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.rest-menu-items::-webkit-scrollbar {
+  width: 6px;
+}
+
+.rest-menu-items::-webkit-scrollbar-track {
+  background: #f3f4f6;
+  border-radius: 10px;
+}
+
+.rest-menu-items::-webkit-scrollbar-thumb {
+  background: #ef4444;
+  border-radius: 10px;
+}
+
+.rest-menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: #f9fafb;
+  border-radius: 8px;
+  gap: 1rem;
+}
+
+.rest-item-info {
+  flex: 1;
+}
+
+.rest-item-name {
+  font-size: 0.9375rem;
+  color: #374151;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.rest-item-price {
+  font-size: 0.9375rem;
+  font-weight: 800;
+  color: #ef4444;
+  background: #fee2e2;
+  padding: 0.375rem 0.75rem;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.rest-menu-button {
+  width: 100%;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.3);
+}
+
+.rest-menu-button:hover {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(239, 68, 68, 0.4);
+}
+
+/* ========================================
+   Benefits Section
+   ======================================== */
+.rest-benefits {
+  padding: 6rem 0;
+  background: linear-gradient(180deg, #fef2f2 0%, #ffffff 100%);
+}
+
+@media (min-width: 768px) {
+  .rest-benefits {
+    padding: 8rem 0;
+  }
+}
+
+.rest-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .rest-benefits-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.rest-benefit-card {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: white;
+  border-radius: 20px;
+  border: 2px solid #fecaca;
+  transition: all 0.4s ease;
+}
+
+.rest-benefit-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(239, 68, 68, 0.15);
+  border-color: #ef4444;
+}
+
+.rest-benefit-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
+  transition: transform 0.4s ease;
+  animation: pulse 2s ease-in-out infinite;
+  color: white;
+}
+
+.rest-benefit-card:hover .rest-benefit-icon-wrapper {
+  transform: scale(1.15) rotate(360deg);
+  animation: none;
+}
+
+.rest-benefit-icon-svg {
+  width: 40px;
+  height: 40px;
+  stroke-width: 2;
+}
+
+.rest-benefit-badge {
+  display: inline-block;
+  background: #fef2f2;
+  color: #ef4444;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.rest-benefit-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.75rem;
+}
+
+.rest-benefit-description {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: #6b7280;
+}
+
+/* ========================================
+   CTA Section - Dark Gradient Background
+   ======================================== */
+.rest-cta {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #1e3a52 0%, #2d5369 50%, #3a6f8f 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .rest-cta {
+    padding: 8rem 0;
+  }
+}
+
+/* Floating circles animation */
+.rest-cta::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: rgba(239, 68, 68, 0.08);
+  border-radius: 50%;
+  animation: float 25s ease-in-out infinite;
+}
+
+.rest-cta::after {
+  content: '';
+  position: absolute;
+  bottom: -25%;
+  left: -8%;
+  width: 450px;
+  height: 450px;
+  background: rgba(220, 38, 38, 0.06);
+  border-radius: 50%;
+  animation: float 20s ease-in-out infinite reverse;
+}
+
+.rest-cta-card {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.rest-cta-icon {
+  font-size: 5rem;
+  margin-bottom: 1.5rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.rest-cta-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  letter-spacing: -1px;
+}
+
+@media (min-width: 768px) {
+  .rest-cta-title {
+    font-size: 3rem;
+  }
+}
+
+.rest-cta-subtitle {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2.5rem;
+}
+
+.rest-cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.rest-cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.125rem 2.5rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.rest-cta-button.whatsapp {
+  background: #25D366;
+  color: white;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+}
+
+.rest-cta-button.whatsapp:hover {
+  background: #20ba5a;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(37, 211, 102, 0.5);
+}
+
+.rest-cta-button.call {
+  background: white;
+  color: #ef4444;
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+}
+
+.rest-cta-button.call:hover {
+  background: #f9fafb;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(255, 255, 255, 0.4);
+}
+
+.rest-whatsapp-icon,
+.rest-call-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* ========================================
+   SEO Footer
+   ======================================== */
+.rest-seo-footer {
+  padding: 3.5rem 0;
+  background: #1f2937;
+  border-top: 4px solid #374151;
+}
+
+.rest-seo-text {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin: 0;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .rest-seo-text {
+    font-size: 1.0625rem;
+  }
+}
+
+/* ========================================
+   Animations
+   ======================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(-30px) translateX(20px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+@media (max-width: 768px) {
+  .rest-hero {
+    min-height: 90vh;
+  }
+
+  .rest-hero-bg {
+    background-attachment: scroll;
+  }
+
+  .rest-hero-title {
+    font-size: 2.8rem;
+  }
+
+  .rest-hero-subtitle {
+    font-size: 1.3rem;
+  }
+
+  .rest-delivery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .rest-benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rest-cta-buttons {
+    flex-direction: column;
+  }
+
+  .rest-cta-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .rest-container {
+    padding: 0 1rem;
+  }
+
+  .rest-hero-title {
+    font-size: 2.2rem;
+  }
+
+  .rest-delivery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rest-delivery-item {
+    padding: 1rem 0.75rem;
+  }
+
+  .rest-benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rest-cta-card {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .rest-cta-title {
+    font-size: 2rem;
+  }
+}
+
+/* Accessibility */
+.rest-cta-button:focus-visible,
+.rest-menu-button:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
