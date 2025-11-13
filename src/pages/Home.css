@@ -818,17 +818,20 @@
 }
 
 /* ========================================
-   Happy Customers Section - FIXED
+   Happy Customers Section - LAPTOP OPTIMIZED
    ======================================== */
 .happy-customers {
   background-color: #f9fafb;
   padding: 4rem 0 6rem 0;
   overflow: hidden;
+  position: relative;
 }
 
 .customers-middle-content {
   padding: 3rem 1rem;
   text-align: center;
+  position: relative;
+  z-index: 10;
 }
 
 .customers-title {
@@ -927,19 +930,32 @@
   fill: currentColor;
 }
 
+/* Carousel wrapper - CRITICAL FOR LAPTOP */
 .customers-carousel-wrapper {
-  margin-bottom: 0;
+  margin-bottom: 2rem;
   overflow: hidden;
   width: 100%;
+  position: relative;
+  height: 220px;
+  display: flex;
+  align-items: center;
 }
 
+/* Carousel container - OPTIMIZED FOR ALL DEVICES */
 .customers-carousel {
   display: flex;
   gap: 1.5rem;
-  width: max-content;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
   will-change: transform;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
 }
 
+/* Customer image cards */
 .customer-image-card {
   flex-shrink: 0;
   width: 280px;
@@ -947,7 +963,9 @@
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .customer-image-card:hover {
@@ -960,47 +978,87 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
-/* First row - Scroll Right to Left (starts at 0%) */
+/* FIRST ROW - Right to Left Animation */
+.customers-carousel-wrapper:first-child .customers-carousel {
+  animation-name: scrollRightToLeft;
+  animation-duration: 35s;
+}
+
 .scroll-right-to-left {
-  animation: scrollRightToLeft 30s linear infinite;
-}
-
-.scroll-right-to-left:hover {
-  animation-play-state: paused;
+  animation: scrollRightToLeft 35s linear infinite !important;
 }
 
 @keyframes scrollRightToLeft {
   0% {
-    transform: translateX(0%);
+    transform: translateY(-50%) translateX(0%);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateY(-50%) translateX(-50%);
   }
 }
 
-/* Second row - Scroll Left to Right (starts at -50%) */
-.scroll-left-to-right {
-  animation: scrollLeftToRight 30s linear infinite;
-  transform: translateX(-50%);
+/* SECOND ROW - Left to Right Animation */
+.customers-carousel-wrapper:last-child .customers-carousel {
+  animation-name: scrollLeftToRight;
+  animation-duration: 35s;
 }
 
-.scroll-left-to-right:hover {
-  animation-play-state: paused;
+.scroll-left-to-right {
+  animation: scrollLeftToRight 35s linear infinite !important;
 }
 
 @keyframes scrollLeftToRight {
   0% {
-    transform: translateX(-50%);
+    transform: translateY(-50%) translateX(-50%);
   }
   100% {
-    transform: translateX(0%);
+    transform: translateY(-50%) translateX(0%);
+  }
+}
+
+/* Pause animation on hover - WORKS ON LAPTOP */
+.customers-carousel:hover {
+  animation-play-state: paused !important;
+}
+
+/* Desktop specific optimizations */
+@media (min-width: 1024px) {
+  .customers-carousel-wrapper {
+    height: 240px;
+  }
+  
+  .customer-image-card {
+    width: 320px;
+    height: 220px;
+  }
+  
+  .customers-carousel {
+    gap: 2rem;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .customers-carousel-wrapper {
+    height: 220px;
+  }
+  
+  .customer-image-card {
+    width: 280px;
+    height: 200px;
   }
 }
 
 /* Mobile adjustments */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
+  .customers-carousel-wrapper {
+    height: 180px;
+  }
+  
   .customer-image-card {
     width: 220px;
     height: 160px;
@@ -1009,4 +1067,36 @@
   .customers-carousel {
     gap: 1rem;
   }
+}
+
+/* Force hardware acceleration on laptop browsers */
+@media (min-width: 1024px) {
+  .customers-carousel {
+    transform: translateY(-50%) translateZ(0);
+    -webkit-transform: translateY(-50%) translateZ(0);
+  }
+  
+  @keyframes scrollRightToLeft {
+    0% {
+      transform: translateY(-50%) translateX(0%) translateZ(0);
+    }
+    100% {
+      transform: translateY(-50%) translateX(-50%) translateZ(0);
+    }
+  }
+  
+  @keyframes scrollLeftToRight {
+    0% {
+      transform: translateY(-50%) translateX(-50%) translateZ(0);
+    }
+    100% {
+      transform: translateY(-50%) translateX(0%) translateZ(0);
+    }
+  }
+}
+
+/* Prevent animation flicker on Chrome/Edge */
+.customers-carousel * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
