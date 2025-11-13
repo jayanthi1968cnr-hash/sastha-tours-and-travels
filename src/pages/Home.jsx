@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import HeroVideoCarousel from './Herovideocarousel';
+import AchievementsCounter from '../components/AchievementsCounter';
 import './Home.css';
 
 // Data for Featured Destinations
@@ -39,17 +40,6 @@ const categories = ['All', 'Mountains', 'Water Falls', 'Hiking', 'Camp fire', 'F
 const Home = () => {
   const navigate = useNavigate();
   
-  // WhatsApp and Call handlers
-  const handleWhatsAppClick = () => {
-    const phoneNumber = '919342512112';
-    const message = encodeURIComponent('Hi, I would like to get a quote for your travel services.');
-    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
-  };
-
-  const handleCallClick = () => {
-    window.location.href = 'tel:+919342512112';
-  };
-
   // State and ref for Services Carousel
   const servicesScrollRef = useRef(null);
   const [services] = useState([
@@ -392,6 +382,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Achievements Counter Section - PERFECT POSITION */}
+      <AchievementsCounter />
 
       {/* Happy Customers Section */}
       <section className="happy-customers">
