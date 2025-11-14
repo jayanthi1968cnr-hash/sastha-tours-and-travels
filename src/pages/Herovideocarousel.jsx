@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom'; // Add this import
-import { ChevronRight, ChevronLeft } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Camera } from 'lucide-react'; // Import Camera icon
 import './Herovideocarousel.css';
 
 // Video data - 4 videos WITHOUT poster/thumbnails
@@ -234,13 +234,24 @@ const HeroVideoCarousel = () => {
               Discover breathtaking destinations with Sastha Travels.
             </p>
             
-            <button 
-              className="explore-packages-btn"
-              onClick={() => navigate('/explore-packages')}
-            >
-              Explore Packages
-              <ChevronRight className="btn-arrow" size={20} />
-            </button>
+            {/* Container for the buttons */}
+            <div className="hero-buttons-container">
+                <button 
+                  className="explore-packages-btn"
+                  onClick={() => navigate('/explore-packages')}
+                >
+                  Explore Packages
+                  <ChevronRight className="btn-arrow" size={20} />
+                </button>
+
+                <button 
+                  className="ooty-spots-btn"
+                  onClick={() => navigate('/ooty-shooting-spots')}
+                >
+                  Ooty’s Famous Shooting Spots
+                  <Camera className="btn-arrow" size={18} />
+                </button>
+            </div>
           </div>
         </div>
 

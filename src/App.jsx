@@ -1,5 +1,3 @@
-// src/App.jsx
-
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
@@ -21,6 +19,7 @@ import FlightBooking from './pages/FlightBooking';
 import LocalTransport from './pages/LocalTransport';
 import Restaurant from './pages/Restaurant';
 import ExplorePackages from './pages/ExplorePackages';
+import OotyShootingSpotsPage from './pages/OotyShootingSpots'; // Import the new page
 
 import './App.css';
 
@@ -47,6 +46,9 @@ export default function App() {
           <Route path="/local-transport" element={<LocalTransport />} />
           <Route path="/restaurant" element={<Restaurant />} />
           <Route path="/explore-packages" element={<ExplorePackages />} />
+          
+          {/* Added Route for Ooty Shooting Spots */}
+          <Route path="/ooty-shooting-spots" element={<OotyShootingSpotsPage />} />
         </Routes>
       </main>
       

@@ -1,0 +1,977 @@
+.ooty-filmy-tour-page {
+    --primary-font: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --heading-font: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --text-color: #1a1a1a;
+    --heading-color: #000000;
+    --bg-color: #ffffff;
+    --primary-color: #008B8B;
+    --accent-color: #00CBA9;
+    --card-bg: #f8f9fa;
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.12);
+
+    font-family: var(--primary-font);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+
+.ooty-filmy-tour-page * {
+    box-sizing: border-box;
+}
+
+.ooty-filmy-tour-page h1,
+.ooty-filmy-tour-page h2,
+.ooty-filmy-tour-page h3,
+.ooty-filmy-tour-page h4 {
+    font-family: var(--heading-font);
+    color: var(--heading-color);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.ooty-filmy-tour-page h1 { 
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+.ooty-filmy-tour-page h2 { 
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+.ooty-filmy-tour-page h3 { 
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+.ooty-filmy-tour-page p { 
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+}
+
+.ooty-filmy-tour-page main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* ==================== LOADING SCREEN ==================== */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #008B8B 0%, #006666 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.loading-content {
+    text-align: center;
+    color: white;
+    max-width: 400px;
+    padding: 2rem;
+}
+
+.loading-logo h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 0 0 0.5rem 0;
+    color: white;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.loading-logo p {
+    font-size: 1.3rem;
+    margin: 0 0 3rem 0;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+.loading-bar-container {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.loading-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #00CBA9, #25D366, #00CBA9);
+    background-size: 200% 100%;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+    animation: shimmer 1.5s infinite;
+    box-shadow: 0 0 15px rgba(0, 203, 169, 0.6);
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.loading-text {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+/* Fade out loading screen */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Page loaded animation */
+.page-loaded {
+    animation: pageReveal 0.8s ease-out;
+}
+
+@keyframes pageReveal {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ==================== HERO BANNER WITH CAROUSEL ==================== */
+.ooty-filmy-tour-page .hero-banner {
+    position: relative;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 2rem;
+}
+
+/* Hero Carousel */
+.ooty-filmy-tour-page .hero-carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+}
+
+.ooty-filmy-tour-page .hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    transform: scale(1);
+    will-change: opacity, transform;
+}
+
+.ooty-filmy-tour-page .hero-slide.active {
+    opacity: 1;
+    z-index: 2;
+    animation: smoothZoom 8s ease-out forwards;
+}
+
+.ooty-filmy-tour-page .hero-slide.next-slide {
+    opacity: 0;
+    z-index: 1;
+}
+
+@keyframes smoothZoom {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.08);
+    }
+}
+
+/* Hero Overlay */
+.ooty-filmy-tour-page .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.3) 0%,
+        rgba(0, 0, 0, 0.2) 50%,
+        rgba(0, 0, 0, 0.4) 100%
+    );
+    z-index: 2;
+}
+
+/* Hero Content */
+.ooty-filmy-tour-page .hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 1200px;
+    width: 100%;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    animation: fadeInUp 1.2s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ooty-filmy-tour-page .hero-text {
+    color: white;
+}
+
+.ooty-filmy-tour-page .hero-banner h1 {
+    color: white;
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.5);
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+}
+
+.ooty-filmy-tour-page .subtext {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 0;
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.5;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.ooty-filmy-tour-page .seo-description {
+    font-size: 1.05rem;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    line-height: 1.8;
+    color: white;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Carousel Indicators */
+.ooty-filmy-tour-page .carousel-indicators {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+    display: flex;
+    gap: 12px;
+}
+
+.ooty-filmy-tour-page .carousel-indicators .indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: all 0.4s ease;
+    padding: 0;
+}
+
+.ooty-filmy-tour-page .carousel-indicators .indicator:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.2);
+}
+
+.ooty-filmy-tour-page .carousel-indicators .indicator.active {
+    background: white;
+    width: 40px;
+    border-radius: 6px;
+}
+
+/* ==================== INTRO SECTION ==================== */
+.ooty-filmy-tour-page .intro-section {
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: var(--bg-color);
+    margin-bottom: 3rem;
+}
+
+.ooty-filmy-tour-page .intro-section h2 {
+    color: var(--heading-color);
+    margin-bottom: 1rem;
+}
+
+.ooty-filmy-tour-page .intro-section .tagline {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.ooty-filmy-tour-page .filmmaker-dream {
+    margin-top: 3rem;
+    padding: 3rem;
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+}
+
+.ooty-filmy-tour-page .filmmaker-dream h3 {
+    color: var(--heading-color);
+    margin-bottom: 2rem;
+}
+
+/* ==================== VIDEO CAROUSEL ==================== */
+.ooty-filmy-tour-page .video-carousel-container {
+    margin: 3rem 0;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.ooty-filmy-tour-page .carousel-nav-btn {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    min-height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: rgba(100, 100, 100, 0.8);
+    border: 2px solid rgba(200, 200, 200, 0.3);
+    font-size: 2.8rem;
+    font-weight: 400;
+    line-height: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    padding: 0;
+    margin: 0;
+    aspect-ratio: 1 / 1;
+    position: relative;
+}
+
+.ooty-filmy-tour-page .carousel-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(200, 200, 200, 0.5);
+    color: rgba(50, 50, 50, 1);
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.ooty-filmy-tour-page .carousel-nav-btn:active {
+    transform: scale(0.98);
+    background: rgba(255, 255, 255, 0.3);
+    color: rgba(30, 30, 30, 1);
+}
+
+.ooty-filmy-tour-page .carousel-nav-btn.left,
+.ooty-filmy-tour-page .carousel-nav-btn.right {
+    position: relative;
+    overflow: hidden;
+}
+
+.ooty-filmy-tour-page .video-carousel {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 1rem 0 2rem 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--card-bg);
+    flex: 1;
+}
+
+.ooty-filmy-tour-page .video-carousel::-webkit-scrollbar {
+    height: 10px;
+}
+
+.ooty-filmy-tour-page .video-carousel::-webkit-scrollbar-track {
+    background: var(--card-bg);
+    border-radius: 10px;
+    margin: 0 10px;
+}
+
+.ooty-filmy-tour-page .video-carousel::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+.ooty-filmy-tour-page .video-carousel::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
+
+.ooty-filmy-tour-page .video-item {
+    flex: 0 0 300px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ooty-filmy-tour-page .video-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.ooty-filmy-tour-page .video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    background: #000;
+}
+
+.ooty-filmy-tour-page .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.ooty-filmy-tour-page .video-title {
+    padding: 1rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--heading-color);
+    text-align: center;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* ==================== LOCATIONS SECTION ==================== */
+.ooty-filmy-tour-page .locations-section {
+    padding-bottom: 3rem;
+}
+
+.ooty-filmy-tour-page .locations-section h2 {
+    color: var(--heading-color);
+}
+
+.ooty-filmy-tour-page .locations-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.ooty-filmy-tour-page .location-card {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 0;
+    align-items: center;
+    background: var(--card-bg);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ooty-filmy-tour-page .location-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+}
+
+.ooty-filmy-tour-page .location-card:nth-child(even) {
+    grid-template-columns: 1.2fr 1fr;
+}
+
+.ooty-filmy-tour-page .location-card:nth-child(even) .location-image-carousel {
+    order: 2;
+}
+
+.ooty-filmy-tour-page .location-image-carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+    overflow: hidden;
+    background: #2c3e50;
+}
+
+.ooty-filmy-tour-page .location-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.ooty-filmy-tour-page .location-image.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.ooty-filmy-tour-page .carousel-dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    gap: 8px;
+}
+
+.ooty-filmy-tour-page .carousel-dots .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.ooty-filmy-tour-page .carousel-dots .dot:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.2);
+}
+
+.ooty-filmy-tour-page .carousel-dots .dot.active {
+    background: white;
+    width: 24px;
+    border-radius: 4px;
+}
+
+.ooty-filmy-tour-page .location-info {
+    padding: 2.5rem;
+    background: white;
+}
+
+.ooty-filmy-tour-page .location-info h3 {
+    color: var(--heading-color);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.ooty-filmy-tour-page .location-info p {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.ooty-filmy-tour-page .location-info strong {
+    color: var(--heading-color);
+    font-weight: 600;
+}
+
+.ooty-filmy-tour-page .location-info ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 1rem;
+}
+
+.ooty-filmy-tour-page .location-info ul li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.ooty-filmy-tour-page .location-info ul li:before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* ==================== OTHER SECTIONS ==================== */
+.ooty-filmy-tour-page .photoshoot-section, 
+.ooty-filmy-tour-page .testimonials-section {
+    padding: 4rem 2rem;
+    margin-bottom: 3rem;
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.ooty-filmy-tour-page .photoshoot-section h3,
+.ooty-filmy-tour-page .testimonials-section h3 {
+    color: var(--heading-color);
+    margin-bottom: 1.5rem;
+}
+
+.ooty-filmy-tour-page .photoshoot-section p {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    color: var(--text-color);
+}
+
+.ooty-filmy-tour-page .photoshoot-section ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 2rem;
+    display: inline-block;
+    text-align: left;
+    background: white;
+    padding: 2rem 3rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.ooty-filmy-tour-page .photoshoot-section li {
+    margin-bottom: 0.8rem;
+    font-weight: 400;
+    color: var(--text-color);
+    font-size: 1.05rem;
+}
+
+/* ==================== TESTIMONIALS ==================== */
+.ooty-filmy-tour-page .testimonial-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ooty-filmy-tour-page .testimonial-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ooty-filmy-tour-page .testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.ooty-filmy-tour-page .testimonial-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid var(--primary-color);
+}
+
+.ooty-filmy-tour-page .testimonial-card blockquote {
+    font-style: italic;
+    border-left: 4px solid var(--primary-color);
+    padding-left: 1.5rem;
+    margin: 0 0 1rem 0;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.ooty-filmy-tour-page .testimonial-card cite {
+    font-weight: 600;
+    color: var(--heading-color);
+    font-style: normal;
+}
+
+/* ==================== BOOKING SECTION ==================== */
+.ooty-filmy-tour-page .booking-section {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #006666 100%);
+    color: white;
+    padding: 4rem 2rem;
+    margin-bottom: 3rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow-hover);
+    text-align: center;
+}
+
+.ooty-filmy-tour-page .booking-section h2 {
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.ooty-filmy-tour-page .booking-section h4 {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.ooty-filmy-tour-page .pricing-info {
+    margin-bottom: 2rem;
+}
+
+.ooty-filmy-tour-page .pricing-info p {
+    font-size: 1.1rem;
+    opacity: 0.95;
+}
+
+.ooty-filmy-tour-page .whatsapp-button {
+    display: inline-block;
+    background-color: #25D366;
+    color: white;
+    padding: 1.2rem 3rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.15rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+}
+
+.ooty-filmy-tour-page .whatsapp-button:hover {
+    background-color: #20BA5A;
+    transform: scale(1.05);
+    box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4);
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 1024px) {
+    .ooty-filmy-tour-page .hero-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .ooty-filmy-tour-page .hero-banner h1 {
+        font-size: 2.8rem;
+    }
+    
+    .ooty-filmy-tour-page .hero-banner {
+        min-height: 650px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ooty-filmy-tour-page h1 { font-size: 2.2rem; }
+    .ooty-filmy-tour-page h2 { font-size: 1.8rem; }
+    .ooty-filmy-tour-page h3 { font-size: 1.4rem; }
+    
+    .loading-logo h1 {
+        font-size: 2.5rem;
+    }
+    
+    .loading-logo p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .ooty-filmy-tour-page .hero-banner {
+        min-height: 600px;
+        padding: 1rem;
+    }
+    
+    .ooty-filmy-tour-page .hero-content {
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+    
+    .ooty-filmy-tour-page .hero-banner h1 {
+        font-size: 2rem;
+    }
+    
+    .ooty-filmy-tour-page .subtext {
+        font-size: 1.1rem;
+    }
+    
+    .ooty-filmy-tour-page .seo-description {
+        font-size: 0.95rem;
+        padding: 1.5rem;
+    }
+    
+    .ooty-filmy-tour-page .carousel-indicators {
+        bottom: 20px;
+    }
+    
+    .ooty-filmy-tour-page .carousel-indicators .indicator {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .ooty-filmy-tour-page .carousel-indicators .indicator.active {
+        width: 30px;
+    }
+    
+    .ooty-filmy-tour-page main {
+        padding: 1rem;
+    }
+    
+    .ooty-filmy-tour-page .location-card, 
+    .ooty-filmy-tour-page .location-card:nth-child(even) {
+        grid-template-columns: 1fr;
+    }
+    
+    .ooty-filmy-tour-page .location-card:nth-child(even) .location-image-carousel {
+        order: 1;
+    }
+    
+    .ooty-filmy-tour-page .location-image-carousel {
+        min-height: 250px;
+    }
+    
+    .ooty-filmy-tour-page .location-info {
+        padding: 1.5rem;
+    }
+    
+    .ooty-filmy-tour-page .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .ooty-filmy-tour-page .photoshoot-section, 
+    .ooty-filmy-tour-page .testimonials-section, 
+    .ooty-filmy-tour-page .booking-section {
+        padding: 2rem 1.5rem;
+    }
+    
+    .ooty-filmy-tour-page .intro-section {
+        padding: 2rem 1rem;
+    }
+    
+    .ooty-filmy-tour-page .filmmaker-dream {
+        padding: 2rem 1rem;
+    }
+    
+    .ooty-filmy-tour-page .photoshoot-section ul {
+        padding: 1.5rem;
+    }
+    
+    .ooty-filmy-tour-page .video-item {
+        flex: 0 0 280px;
+    }
+    
+    .ooty-filmy-tour-page .video-title {
+        font-size: 0.9rem;
+        padding: 0.75rem;
+    }
+    
+    .ooty-filmy-tour-page .video-carousel {
+        padding: 1rem 0.5rem 2rem 0.5rem;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
+    
+    .ooty-filmy-tour-page .carousel-nav-btn {
+        width: 55px;
+        height: 55px;
+        min-width: 55px;
+        min-height: 55px;
+        font-size: 2.5rem;
+        background: rgba(255, 255, 255, 0.12);
+        border-width: 1.5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .loading-logo h1 {
+        font-size: 2rem;
+    }
+    
+    .loading-logo p {
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+    }
+    
+    .ooty-filmy-tour-page .hero-banner {
+        min-height: 550px;
+    }
+    
+    .ooty-filmy-tour-page .hero-banner h1 {
+        font-size: 1.6rem;
+    }
+    
+    .ooty-filmy-tour-page .subtext {
+        font-size: 1rem;
+    }
+    
+    .ooty-filmy-tour-page .seo-description {
+        font-size: 0.9rem;
+        padding: 1.25rem;
+    }
+    
+    .ooty-filmy-tour-page .whatsapp-button {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+    
+    .ooty-filmy-tour-page .carousel-indicators .indicator.active {
+        width: 25px;
+    }
+    
+    .ooty-filmy-tour-page .video-item {
+        flex: 0 0 260px;
+    }
+    
+    .ooty-filmy-tour-page .video-title {
+        font-size: 0.85rem;
+        padding: 0.65rem;
+    }
+    
+    .ooty-filmy-tour-page .video-carousel {
+        gap: 1rem;
+        padding: 1rem 0.5rem 2rem 0.5rem;
+    }
+    
+    .ooty-filmy-tour-page .carousel-nav-btn {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+        min-height: 50px;
+        font-size: 2.2rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-width: 1.5px;
+    }
+    
+    .ooty-filmy-tour-page .video-carousel-container {
+        gap: 0.5rem;
+    }
+}

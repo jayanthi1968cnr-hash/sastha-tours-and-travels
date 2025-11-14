@@ -321,6 +321,14 @@
   }
 }
 
+/* ===== HERO BUTTONS CONTAINER (NEW) ===== */
+.hero-buttons-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
+    gap: 1rem;
+    align-items: center;
+}
+
 /* ===== EXPLORE BUTTON ===== */
 .explore-packages-btn {
   background-color: #ff5722;
@@ -344,11 +352,35 @@
   box-shadow: 0 6px 16px rgba(255, 87, 34, 0.5);
 }
 
+/* ===== OOTY SPOTS BUTTON (NEW) ===== */
+.ooty-spots-btn {
+  background-color: rgba(29, 78, 216, 1);; /* A nice cinematic teal */
+  color: white;
+  font-size: 1.125rem;
+  font-weight: 600;
+  padding: 1rem 2.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 121, 107, 0.4);
+}
+
+.ooty-spots-btn:hover {
+  background-color: rgba(29, 78, 216, 1);;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 121, 107, 0.5);
+}
+
 .btn-arrow {
   transition: transform 0.3s ease;
 }
 
-.explore-packages-btn:hover .btn-arrow {
+.explore-packages-btn:hover .btn-arrow,
+.ooty-spots-btn:hover .btn-arrow {
   transform: translateX(4px);
 }
 
@@ -519,7 +551,7 @@
     font-size: 0.95rem;
   }
   
-  .explore-packages-btn {
+  .explore-packages-btn, .ooty-spots-btn {
     font-size: 1rem;
     padding: 0.875rem 2rem;
   }
